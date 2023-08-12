@@ -1,0 +1,17 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1;
+  color: $color-grayscale-header;
+}
+
+body {
+  height: 100vh;
+  background-color: $color-bg;
+}
+
+#app {
+  height: 100%;
+}

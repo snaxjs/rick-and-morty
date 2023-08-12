@@ -1,0 +1,38 @@
+{
+  "name": "rickandmorty",
+  "version": "1.0.0",
+  "description": "Pet project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack serve",
+    "build": "webpack build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^29.5.3",
+    "@types/node": "^20.4.9",
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7",
+    "@types/react-redux": "^7.1.25",
+    "@webpack-cli/generators": "^3.0.7",
+    "css-loader": "^6.8.1",
+    "html-webpack-plugin": "^5.5.3",
+    "mini-css-extract-plugin": "^2.7.6",
+    "prettier": "^3.0.1",
+    "sass": "^1.65.1",
+    "sass-loader": "^13.3.2",
+    "ts-loader": "^9.4.4",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
+    "axios": "^1.4.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.1.2"
+  }
+}

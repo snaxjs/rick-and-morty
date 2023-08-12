@@ -1,0 +1,62 @@
+.char-card {
+  height: 300px;
+  width: 100%;
+  max-width: 250px;
+  box-shadow: 0 35px 40px 0 rgba(0, 0, 0, 0.08);
+  border-radius: 32px;
+  overflow: hidden;
+  margin: 20px;
+  cursor: pointer;
+
+  &__image-wrapper {
+    max-height: 150px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__image {
+    width: 100%;
+  }
+
+  &__char-info {
+    padding: 18px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__char-name {
+    font-size: 16px;
+  }
+
+  &__char-species,
+  &__char-gender,
+  &__char-from {
+    font-size: 12px;
+    color: $color-grayscale-label;
+  }
+
+  &__name-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-right: 8px;
+  }
+
+  &__char-status {
+    font-size: 14px;
+
+    &_alive {
+      color: $color-green500;
+    }
+
+    &_dead {
+      color: $color-pink500;
+    }
+
+    &_unknown {
+      color: $color-grayscale-header;
+    }
+  }
+}
