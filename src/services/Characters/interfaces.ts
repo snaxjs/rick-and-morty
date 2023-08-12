@@ -5,11 +5,13 @@ export interface ICharactersService {
 }
 
 export interface IGetAllCharactersResponse {
-  info: {
-    count: number;
-    pages: number;
+  characters: {
+    info: {
+      count: number;
+      pages: number;
+    };
+    results: ICharacter[];
   };
-  results: ICharacter[];
 }
 
 export interface ICharacter {
