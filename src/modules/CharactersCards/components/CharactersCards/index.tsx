@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../../../hooks/redux";
 import { setCharacters, setTotalPages } from "../../characters.slice";
 import CharCard from "../../../../components/CharCard";
 import { ErrorHandler } from "../../../../utils/ErrorHandler";
+import { classNames } from "../../../../utils/ClassNames";
 
 interface ICharactersCardsProps {
   classNames?: string[];
@@ -29,7 +30,7 @@ export const CharactersCards = (props: ICharactersCardsProps) => {
   }, [data, error]);
 
   return (
-    <div className="characters-cards">
+    <div className={classNames("characters-cards", props.classNames)}>
       {isLoading ? (
         <span>Loading...</span>
       ) : (

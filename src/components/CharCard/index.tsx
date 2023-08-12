@@ -1,5 +1,6 @@
 import React from "react";
 import { CharGenderTypes } from "../../services/Characters/types";
+import { classNames } from "../../utils/ClassNames";
 
 interface ICharCardProps {
   classNames?: string[];
@@ -17,7 +18,7 @@ const CharCard = (props: ICharCardProps) => {
     : "";
 
   return (
-    <div className="char-card">
+    <div className={classNames("char-card", props.classNames)}>
       <section className="char-card__image-wrapper">
         <img className="char-card__image" src={props.image} alt={props.name} />
       </section>

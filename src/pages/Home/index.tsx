@@ -1,5 +1,6 @@
 import React from "react";
 import { CharactersCards } from "../../modules/CharactersCards";
+import { classNames } from "../../utils/ClassNames";
 
 interface IHomePageProps {
   classNames?: string[];
@@ -7,7 +8,7 @@ interface IHomePageProps {
 
 const HomePage = (props: IHomePageProps) => {
   return (
-    <div className="home-page">
+    <div className={classNames("home-page", props.classNames)}>
       <CharactersCards />
     </div>
   );
