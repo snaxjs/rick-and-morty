@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useGetAllCharactersQuery } from "../../../../services/Characters/characters.endpoints";
 import { useAppDispatch, useAppSelector } from "../../../../hooks/redux";
-import { setCharacters } from "../../characters.slice";
+import { setCharacters, setTotalPages } from "../../characters.slice";
 import CharCard from "../../../../components/CharCard";
 
 interface ICharactersCardsProps {
@@ -18,6 +18,7 @@ export const CharactersCards = (props: ICharactersCardsProps) => {
   useEffect(() => {
     if (isSuccess && data?.characters.results.length) {
       dispatch(setCharacters(data.characters.results));
+      dispatch(setTotalPages(data.characters.info.pages));
     }
   }, [data]);
 

@@ -4,11 +4,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface ICharactersState {
   page: number;
   characters: ICharacter[];
+  totalPages: number;
 }
 
 const initialState: ICharactersState = {
   characters: [],
   page: 1,
+  totalPages: 0,
 };
 
 export const charactersSlice = createSlice({
@@ -21,8 +23,12 @@ export const charactersSlice = createSlice({
     setCharacters: (state, action: PayloadAction<ICharacter[]>) => {
       state.characters = action.payload;
     },
+    setTotalPages: (state, action: PayloadAction<number>) => {
+      state.totalPages = action.payload;
+    },
   },
 });
 
-export const { setPage, setCharacters } = charactersSlice.actions;
+export const { setPage, setCharacters, setTotalPages } =
+  charactersSlice.actions;
 export const { reducer } = charactersSlice;
