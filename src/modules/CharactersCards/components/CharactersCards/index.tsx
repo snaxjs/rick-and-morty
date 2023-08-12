@@ -3,6 +3,7 @@ import { useGetAllCharactersQuery } from "../../../../services/Characters/charac
 import { useAppDispatch, useAppSelector } from "../../../../hooks/redux";
 import { setCharacters, setTotalPages } from "../../characters.slice";
 import CharCard from "../../../../components/CharCard";
+import { ErrorHandler } from "../../../../utils/ErrorHandler";
 
 interface ICharactersCardsProps {
   classNames?: string[];
@@ -11,16 +12,21 @@ interface ICharactersCardsProps {
 export const CharactersCards = (props: ICharactersCardsProps) => {
   const characters = useAppSelector((state) => state.characters);
   const dispatch = useAppDispatch();
-  const { data, isLoading, isSuccess } = useGetAllCharactersQuery({
-    page: characters.page,
-  });
+  const { data, isLoading, isSuccess, error, isError } =
+    useGetAllCharactersQuery({
+      page: characters.page,
+    });
 
   useEffect(() => {
     if (isSuccess && data?.characters.results.length) {
       dispatch(setCharacters(data.characters.results));
       dispatch(setTotalPages(data.characters.info.pages));
     }
-  }, [data]);
+
+    if (isError) {
+      ErrorHandler(error);
+    }
+  }, [data, error]);
 
   return (
     <div className="characters-cards">
@@ -28,7 +34,7 @@ export const CharactersCards = (props: ICharactersCardsProps) => {
         <span>Loading...</span>
       ) : (
         <div className="characters-cards__cards">
-          {data.characters.results.map((char) => (
+          {data?.characters.results.map((char) => (
             <CharCard
               key={char.id}
               name={char.name}
