@@ -37,28 +37,28 @@ export const CharactersCards = (props: ICharactersCardsProps) => {
 
   return (
     <div className={classNames("characters-cards", props.classNames)}>
+      {isLoading ? (
+        <span>Loading...</span>
+      ) : (
+        <div className="characters-cards__cards">
+          {characters.list.map((char) => (
+            <CharCard
+              key={char.id}
+              name={char.name}
+              from={char.origin.name}
+              species={char.species}
+              image={char.image}
+              gender={char.gender}
+              status={char.status}
+            />
+          ))}
+        </div>
+      )}
       <Pagination
         pages={characters.totalPages}
         currentPage={characters.page}
         onClick={onPagination}
       />
-      {/*{isLoading ? (*/}
-      {/*  <span>Loading...</span>*/}
-      {/*) : (*/}
-      {/*  <div className="characters-cards__cards">*/}
-      {/*    {characters.list.map((char) => (*/}
-      {/*      <CharCard*/}
-      {/*        key={char.id}*/}
-      {/*        name={char.name}*/}
-      {/*        from={char.origin.name}*/}
-      {/*        species={char.species}*/}
-      {/*        image={char.image}*/}
-      {/*        gender={char.gender}*/}
-      {/*        status={char.status}*/}
-      {/*      />*/}
-      {/*    ))}*/}
-      {/*  </div>*/}
-      {/*)}*/}
     </div>
   );
 };

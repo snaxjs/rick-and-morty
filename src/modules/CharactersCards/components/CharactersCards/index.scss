@@ -1,7 +1,11 @@
 .characters-cards {
+  display: flex;
+  flex-direction: column;
+
   &__cards {
     display: flex;
     flex-wrap: wrap;
     gap: 24px;
+    margin-bottom: 24px;
   }
 }
