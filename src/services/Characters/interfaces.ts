@@ -16,8 +16,17 @@ export interface ICharacter {
   species: string;
   gender: CharGenderTypes;
   origin: ICharOrigin;
+  episode: string[];
+  location: ICharLocation;
+  type: string;
+  url: string;
 }
 
 export interface ICharOrigin {
   name: string;
+}
+
+export interface ICharLocation {
+  name: string;
+  url: string;
 }

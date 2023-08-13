@@ -18,6 +18,18 @@ const config = {
     clean: true,
     filename: "[name].[contenthash].js",
   },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          name: "vendors",
+          test: /node_modules/,
+          chunks: "all",
+          enforce: true,
+        },
+      },
+    },
+  },
   devServer: {
     open: true,
     host: "localhost",
