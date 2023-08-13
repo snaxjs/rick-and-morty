@@ -9,9 +9,19 @@ interface IPaginationProps {
 
 const MAX_BUTTONS = 5;
 
-const Button = (page: number, onClick?: (e: React.MouseEvent) => void) => {
+const Button = (
+  page: number,
+  onClick?: (e: React.MouseEvent) => void,
+  className?: string,
+) => {
   return (
-    <button key={page} data-page={page} onClick={onClick} disabled={!page}>
+    <button
+      className={className}
+      key={page}
+      data-page={page}
+      onClick={onClick}
+      disabled={!page}
+    >
       {page ? page : "..."}
     </button>
   );
@@ -51,7 +61,18 @@ const Pagination = (props: IPaginationProps) => {
     fillElements();
   }, [props.pages, props.currentPage]);
 
-  return <div>{elements.map((page) => Button(page, props.onClick))}</div>;
+  return (
+    <div className="pagination">
+      {elements.map((page) => {
+        const isCurrent =
+          page === props.currentPage ? " pagination__button_current" : "";
+        const isDots = !page ? " pagination__button_dots" : "";
+        const className = `pagination__button${isCurrent}${isDots}`;
+
+        return Button(page, props.onClick, className);
+      })}
+    </div>
+  );
 };
 
 export default Pagination;

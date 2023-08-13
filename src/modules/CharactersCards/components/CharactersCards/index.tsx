@@ -38,7 +38,7 @@ export const CharactersCards = (props: ICharactersCardsProps) => {
   return (
     <div className={classNames("characters-cards", props.classNames)}>
       <Pagination
-        pages={9}
+        pages={characters.totalPages}
         currentPage={characters.page}
         onClick={onPagination}
       />
@@ -46,7 +46,7 @@ export const CharactersCards = (props: ICharactersCardsProps) => {
       {/*  <span>Loading...</span>*/}
       {/*) : (*/}
       {/*  <div className="characters-cards__cards">*/}
-      {/*    {data?.characters.results.map((char) => (*/}
+      {/*    {characters.list.map((char) => (*/}
       {/*      <CharCard*/}
       {/*        key={char.id}*/}
       {/*        name={char.name}*/}

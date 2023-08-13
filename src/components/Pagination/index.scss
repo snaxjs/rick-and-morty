@@ -1,3 +1,23 @@
 .pagination {
+  display: flex;
+  gap: 4px;
 
+  &__button {
+    height: 40px;
+    min-width: 40px;
+    border: none;
+    border-radius: 50%;
+    background-color: $color-grayscale-body;
+    color: $color-grayscale-bg;
+    cursor: pointer;
+
+    &_current {
+      background-color: $color-grayscale-label;
+    }
+
+    &_dots {
+      background-color: $color-grayscale-line;
+      color: $color-grayscale-header-weak;
+    }
+  }
 }

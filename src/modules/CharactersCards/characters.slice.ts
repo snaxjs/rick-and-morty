@@ -3,12 +3,12 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface ICharactersState {
   page: number;
-  characters: ICharacter[];
+  list: ICharacter[];
   totalPages: number;
 }
 
 const initialState: ICharactersState = {
-  characters: [],
+  list: [],
   page: 1,
   totalPages: 0,
 };
@@ -21,7 +21,7 @@ export const charactersSlice = createSlice({
       state.page = action.payload;
     },
     setCharacters: (state, action: PayloadAction<ICharacter[]>) => {
-      state.characters = action.payload;
+      state.list = action.payload;
     },
     setTotalPages: (state, action: PayloadAction<number>) => {
       state.totalPages = action.payload;
