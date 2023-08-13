@@ -9,6 +9,7 @@ import { useGetAllCharactersQuery } from "../../../../services/Characters/charac
 
 interface ICharactersCardsProps {
   classNames?: string[];
+  onCardClick?: (value?: any) => void;
 }
 
 export const CharactersCards = (props: ICharactersCardsProps) => {
@@ -40,7 +41,11 @@ export const CharactersCards = (props: ICharactersCardsProps) => {
       ) : (
         <div className="characters-cards__cards">
           {characters.list.map((char) => (
-            <div className="characters-cards__card-wrapper" key={char.id}>
+            <div
+              className="characters-cards__card-wrapper"
+              key={char.id}
+              onClick={() => props.onCardClick(char.id)}
+            >
               <CharCard
                 classNames={["characters-cards__card"]}
                 name={char.name}
