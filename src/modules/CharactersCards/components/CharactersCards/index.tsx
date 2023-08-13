@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { useGetAllCharactersQuery } from "../../../../services/Characters/characters.endpoints";
 import { useAppDispatch, useAppSelector } from "../../../../hooks/redux";
-import { setCharacters, setTotalPages } from "../../characters.slice";
+import { setCharacters, setPage, setTotalPages } from "../../characters.slice";
 import CharCard from "../../../../components/CharCard";
 import { ErrorHandler } from "../../../../utils/ErrorHandler";
 import { classNames } from "../../../../utils/ClassNames";
+import Pagination from "../../../../components/Pagination";
 
 interface ICharactersCardsProps {
   classNames?: string[];
@@ -29,25 +30,35 @@ export const CharactersCards = (props: ICharactersCardsProps) => {
     }
   }, [data, error]);
 
+  const onPagination = (e: React.MouseEvent) => {
+    const page = Number(e.currentTarget.getAttribute("data-page"));
+    dispatch(setPage(page));
+  };
+
   return (
     <div className={classNames("characters-cards", props.classNames)}>
-      {isLoading ? (
-        <span>Loading...</span>
-      ) : (
-        <div className="characters-cards__cards">
-          {data?.characters.results.map((char) => (
-            <CharCard
-              key={char.id}
-              name={char.name}
-              from={char.origin.name}
-              species={char.species}
-              image={char.image}
-              gender={char.gender}
-              status={char.status}
-            />
-          ))}
-        </div>
-      )}
+      <Pagination
+        pages={9}
+        currentPage={characters.page}
+        onClick={onPagination}
+      />
+      {/*{isLoading ? (*/}
+      {/*  <span>Loading...</span>*/}
+      {/*) : (*/}
+      {/*  <div className="characters-cards__cards">*/}
+      {/*    {data?.characters.results.map((char) => (*/}
+      {/*      <CharCard*/}
+      {/*        key={char.id}*/}
+      {/*        name={char.name}*/}
+      {/*        from={char.origin.name}*/}
+      {/*        species={char.species}*/}
+      {/*        image={char.image}*/}
+      {/*        gender={char.gender}*/}
+      {/*        status={char.status}*/}
+      {/*      />*/}
+      {/*    ))}*/}
+      {/*  </div>*/}
+      {/*)}*/}
     </div>
   );
 };

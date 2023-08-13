@@ -8,9 +8,11 @@ interface IHomePageProps {
 
 const HomePage = (props: IHomePageProps) => {
   return (
-    <div className={classNames("home-page", props.classNames)}>
-      <CharactersCards />
-    </div>
+    <main className={classNames("home-page", props.classNames)}>
+      <div style={{ maxWidth: 1200 }}>
+        <CharactersCards />
+      </div>
+    </main>
   );
 };
 
