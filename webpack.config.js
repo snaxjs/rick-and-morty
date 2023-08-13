@@ -2,14 +2,21 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const isProduction = process.env.NODE_ENV == "production";
-
+const isProduction = process.env.NODE_ENV === "production";
+const mode = isProduction ? "production" : "development";
 const stylesHandler = MiniCssExtractPlugin.loader;
+const target = isProduction ? "browserslist" : "web";
+const devtool = isProduction ? void 0 : "source-map";
 
 const config = {
-  entry: "./src/index.tsx",
+  mode,
+  target,
+  devtool,
+  entry: path.resolve(__dirname, "src", "index.tsx"),
   output: {
     path: path.resolve(__dirname, "dist"),
+    clean: true,
+    filename: "[name].[contenthash].js",
   },
   devServer: {
     open: true,
@@ -18,12 +25,24 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "index.html",
+      template: path.resolve(__dirname, "", "index.html"),
     }),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: "[name].[contenthash].css",
+    }),
   ],
   module: {
     rules: [
+      {
+        test: /\.(?:js|mjs|cjs)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: [["@babel/preset-env", { targets: "defaults" }]],
+          },
+        },
+      },
       {
         test: /\.(ts|tsx)$/i,
         loader: "ts-loader",
@@ -31,11 +50,33 @@ const config = {
       },
       {
         test: /\.s[ac]ss$/i,
-        use: [stylesHandler, "css-loader", "sass-loader"],
+        use: [
+          stylesHandler,
+          "css-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [["postcss-preset-env"]],
+              },
+            },
+          },
+          "sass-loader",
+        ],
       },
       {
-        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
+        test: /\.(eot|svg|png|jpg|gif)$/i,
         type: "asset",
+        generator: {
+          filename: "assets/images/[name].[ext]",
+        },
+      },
+      {
+        test: /\.(ttf)$/i,
+        type: "asset",
+        generator: {
+          filename: "assets/fonts/[name].[ext]",
+        },
       },
     ],
   },
@@ -50,5 +91,6 @@ module.exports = () => {
   } else {
     config.mode = "development";
   }
+
   return config;
 };
