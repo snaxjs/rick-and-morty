@@ -1,6 +1,7 @@
 import React from "react";
 import { CharactersCards } from "../../modules/CharactersCards";
 import { classNames } from "../../utils/ClassNames";
+import { MAX_CONTAINER_WIDTH } from "../../constants/media";
 
 interface IHomePageProps {
   classNames?: string[];
@@ -9,7 +10,7 @@ interface IHomePageProps {
 const HomePage = (props: IHomePageProps) => {
   return (
     <main className={classNames("home-page", props.classNames)}>
-      <div style={{ maxWidth: 1200 }}>
+      <div style={{ maxWidth: MAX_CONTAINER_WIDTH }}>
         <CharactersCards />
       </div>
     </main>
