@@ -1,17 +1,11 @@
 import { CharGenderTypes } from "./types";
 
-export interface ICharactersService {
-  getAllCharacters: (page?: number) => Promise<IGetAllCharactersResponse>;
-}
-
 export interface IGetAllCharactersResponse {
-  characters: {
-    info: {
-      count: number;
-      pages: number;
-    };
-    results: ICharacter[];
+  info: {
+    count: number;
+    pages: number;
   };
+  results: ICharacter[];
 }
 
 export interface ICharacter {

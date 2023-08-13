@@ -1,2 +1,2 @@
-export { reducer } from "./characters.slice";
+export { reducer as charactersReducer } from "./characters.slice";
 export { CharactersCards } from "./components/CharactersCards";

@@ -1,16 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
 // Api reducers
-import { charactersApi } from "./services/Characters/characters.api";
+import { characterApi } from "./services/Characters/characters.api";
 // Reducers
-import { reducer as charactersReducer } from "./modules/CharactersCards/index";
+import { charactersReducer } from "./modules/CharactersCards/index";
 
 export const store = configureStore({
   reducer: {
-    [charactersApi.reducerPath]: charactersApi.reducer,
+    [characterApi.reducerPath]: characterApi.reducer,
     characters: charactersReducer,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(charactersApi.middleware),
+  middleware: (getDefaultMiddleware: any) =>
+    getDefaultMiddleware().concat(characterApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
