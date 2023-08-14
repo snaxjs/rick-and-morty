@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkrickandmorty=self.webpackChunkrickandmorty||[]).push([[755],{844:function(e,r,a){a.r(r);var n=a(294),t=a(631),c=a(975),l=a(434);r.default=e=>{const{id:r}=(0,l.UO)(),{data:a,isLoading:s,error:i}=(0,c.P6)(Number(r));return console.log("CHAR PAGE"),n.createElement("main",{className:(0,t.A)("char-page")},s?null:JSON.stringify(a,null,2))}}}]);

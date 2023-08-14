@@ -1,0 +1,3 @@
+/*! For license information please see char.e7b7c0a4ef9d936a4a43.js.LICENSE.txt */
+"use strict";(self.webpackChunkrickandmorty=self.webpackChunkrickandmorty||[]).push([["char"],{"./src/pages/Char/index.tsx":(e,s,r)=>{r.r(s),r.d(s,{default:()=>u});var a=r("./node_modules/react/index.js"),t=r.n(a),c=r("./src/utils/ClassNames.ts"),n=r("./src/services/Characters/characters.api.ts"),i=r("./node_modules/react-router/dist/index.js");const u=e=>{const{id:s}=(0,i.useParams)(),{data:r,isLoading:a,error:u}=(0,n.useGetCharacterQuery)(Number(s));return t().createElement("main",{className:(0,c.classNames)("char-page")},a?null:JSON.stringify(r,null,2))}}}]);
+//# sourceMappingURL=char.e7b7c0a4ef9d936a4a43.js.map
