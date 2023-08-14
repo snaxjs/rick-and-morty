@@ -16,7 +16,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@main
-
+      with: 
+        GOOGLE_SEARCH_API_KEY: ${{ secrets.GOOGLE_SEARCH_API_KEY }}
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@main
       with:
