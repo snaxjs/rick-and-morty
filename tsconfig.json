@@ -3,9 +3,11 @@
     "outDir": "./dist",
     "target": "ESNext",
     "module": "ESNext",
-    "jsx": "react",
+    "jsx": "preserve",
     "noImplicitAny": true,
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "Node",
-  }
+    "typeRoots": ["./node_modules/@types", "./src/tsTypes"]
+  },
+  "exclude": ["node_modules", "dist"]
 }

@@ -18,8 +18,8 @@ const config = {
   output: {
     path: path.resolve(__dirname, "dist"),
     clean: true,
-    filename: "[name].[contenthash].js",
-    chunkFilename: "[name].[contenthash].js",
+    filename: isProduction ? "[name].[contenthash].js" : "[name].js",
+    chunkFilename: isProduction ? "[name].[contenthash].js" : "[name].js",
   },
   optimization: {
     minimize: true,
@@ -46,7 +46,7 @@ const config = {
       template: path.resolve(__dirname, "", "index.html"),
     }),
     new MiniCssExtractPlugin({
-      filename: "[name].[contenthash].css",
+      filename: isProduction ? "[name].[contenthash].css" : "[name].css",
     }),
   ],
   module: {
@@ -84,7 +84,7 @@ const config = {
       },
       {
         test: /\.(eot|svg|png|jpg|gif)$/i,
-        type: "asset",
+        type: "asset/resource",
         generator: {
           filename: "assets/images/[name].[ext]",
         },
