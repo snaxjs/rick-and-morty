@@ -1,6 +1,37 @@
 .side-menu {
-  width: 64px;
-  background-color: $color-grayscale-header-weak;
   height: 100%;
-  box-shadow: 35px 0 40px 0 rgba(0, 0, 0, 0.06);
+
+  &__burger-wrapper {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__burger {
+    width: 75%;
+    height: 75%;
+    fill: white;
+    transform: translate(-2px,-2px);
+  }
+
+  &__menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: $color-grayscale-header-weak;
+    box-shadow: 35px 0 40px 0 rgba(0, 0, 0, 0.06);
+    z-index: 2;
+  }
+
+  &__substrate {
+    background-color: $color-grayscale-header-weak;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 64px;
+    height: 100%;
+    z-index: 1;
+  }
 }
