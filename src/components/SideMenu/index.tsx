@@ -1,6 +1,6 @@
 import React from "react";
 import { classNames } from "../../utils/ClassNames";
-import { ReactComponent as IconBurger } from "../../assets/icons/burger.svg";
+import IconBurger from "../../assets/icons/burger.svg";
 
 interface ISideMenuProps {
   classNames?: string[];

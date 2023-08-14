@@ -83,11 +83,22 @@ const config = {
         ],
       },
       {
-        test: /\.(eot|svg|png|jpg|gif)$/i,
+        test: /\.(eot|png|jpg|gif)$/i,
         type: "asset/resource",
         generator: {
           filename: "assets/images/[name].[ext]",
         },
+      },
+      {
+        test: /\.svg$/i,
+        type: "asset/inline",
+        resourceQuery: /url/,
+      },
+      {
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        resourceQuery: { not: [/url/] },
+        use: ["@svgr/webpack"],
       },
       {
         test: /\.(ttf)$/i,
