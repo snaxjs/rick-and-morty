@@ -12,14 +12,20 @@ const config = {
   mode,
   target,
   devtool,
-  entry: path.resolve(__dirname, "src", "index.tsx"),
+  entry: {
+    main: path.resolve(__dirname, "src", "index.tsx"),
+  },
   output: {
     path: path.resolve(__dirname, "dist"),
     clean: true,
     filename: "[name].[contenthash].js",
+    chunkFilename: "[name].[contenthash].js",
   },
   optimization: {
+    minimize: true,
     splitChunks: {
+      chunks: "all",
+      minRemainingSize: 0,
       cacheGroups: {
         vendor: {
           name: "vendors",

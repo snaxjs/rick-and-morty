@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "outDir": "./dist",
-    "target": "es5",
-    "module": "Node16",
+    "target": "ESNext",
+    "module": "ESNext",
     "jsx": "react",
     "noImplicitAny": true,
     "allowSyntheticDefaultImports": true,

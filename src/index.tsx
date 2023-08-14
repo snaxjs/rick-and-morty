@@ -1,5 +1,4 @@
 import React from "react";
-import App from "./app";
 import "./scss/index.scss";
 import { Provider } from "react-redux";
 import { store } from "./store";

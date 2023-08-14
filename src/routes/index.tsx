@@ -5,8 +5,12 @@ import FullScreenLoader from "../components/FullScreenLoader";
 import { PATHS } from "../constants/paths";
 import App from "../app";
 
-const HomePageLazy = lazy(() => import("../pages/Home/index"));
-const CharPageLazy = lazy(() => import("../pages/Char/index"));
+const HomePageLazy = lazy(
+  () => import(/* webpackChunkName: "home" */ "../pages/Home/index"),
+);
+const CharPageLazy = lazy(
+  () => import(/* webpackChunkName: "char" */ "../pages/Char/index"),
+);
 
 export const router = createBrowserRouter([
   {
