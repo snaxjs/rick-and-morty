@@ -36,6 +36,10 @@ const SideMenu = (props: ISideMenuProps) => {
     }
   };
 
+  const onArrowsClick = () => {
+    animate(x, -64, { duration: 0.7 });
+  };
+
   return (
     <MotionConfig reducedMotion="user">
       <div className={classNames("side-menu", props.classNames)}>
@@ -53,6 +57,7 @@ const SideMenu = (props: ISideMenuProps) => {
         >
           <div className="side-menu__menu">
             <motion.div
+              onClick={onArrowsClick}
               style={{ right, opacity: opacityReverse }}
               className="side-menu__arrows-wrapper"
             >
