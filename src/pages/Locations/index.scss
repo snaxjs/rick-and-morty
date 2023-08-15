@@ -1,0 +1,7 @@
+.locations-page {
+  @extend .home-page;
+
+  &__title {
+    @extend .home-page__title;
+  }
+}
