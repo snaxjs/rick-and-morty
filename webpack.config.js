@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const Dotenv = require("dotenv-webpack");
 
 const isProduction = process.env.NODE_ENV === "production";
 const mode = isProduction ? "production" : "development";
@@ -42,6 +43,9 @@ const config = {
     historyApiFallback: true,
   },
   plugins: [
+    new Dotenv({
+      path: path.resolve(__dirname, "src/configs", "config.env"),
+    }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "", "index.html"),
     }),
