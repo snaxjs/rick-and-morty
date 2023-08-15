@@ -8,7 +8,6 @@ import {
 } from "../../constants/media";
 import { useNavigate } from "react-router-dom";
 import { PATHS } from "../../constants/paths";
-import SideMenu from "../../components/SideMenu";
 
 interface IHomePageProps {
   classNames?: string[];
@@ -22,7 +21,6 @@ const HomePage = (props: IHomePageProps) => {
 
   return (
     <main className={classNames("home-page", props.classNames)}>
-      <SideMenu classNames={["home-page__side-menu"]} />
       <div
         style={{
           maxWidth: MAX_CONTAINER_WIDTH,
