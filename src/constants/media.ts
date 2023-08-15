@@ -6,3 +6,7 @@ export const MEDIA = {
 };
 
 export const MAX_CONTAINER_WIDTH = 1200;
+
+export const SIDE_MENU_WIDTH = {
+  PC: 64,
+};

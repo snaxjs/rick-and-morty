@@ -8,7 +8,7 @@ interface ICharPageProps {
 
 const CharPage = (props: ICharPageProps) => {
   const { id } = useParams();
-  const { data, isLoading, error } = useGetCharacterQuery(Number(id));
+  const { data, isLoading } = useGetCharacterQuery(Number(id));
 
   return (
     <main className={classNames("char-page")}>
