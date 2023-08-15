@@ -14,7 +14,7 @@ interface ISideMenuProps {
 }
 
 const SideMenu = (props: ISideMenuProps) => {
-  const x = useMotionValue(-64);
+  const x = useMotionValue(-400);
   const width = useTransform(x, (value) => value + 50);
   const right = useTransform(x, (value) => Math.abs(value) - 400);
   const opacity = useTransform(x, [-400, -64], [0, 1]);
