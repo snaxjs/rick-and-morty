@@ -1,6 +1,12 @@
 import React from "react";
 import { classNames } from "../../utils/ClassNames";
-import { animate, motion, useMotionValue, useTransform } from "framer-motion";
+import {
+  animate,
+  motion,
+  useMotionValue,
+  useTransform,
+  MotionConfig,
+} from "framer-motion";
 import IconBurger from "../../assets/icons/burger.svg";
 import IconRoundDoubleArrow from "../../assets/icons/round-double-arrow.svg";
 import Logo from "../../assets/svg/logo.svg";
@@ -31,49 +37,54 @@ const SideMenu = (props: ISideMenuProps) => {
   };
 
   return (
-    <div className={classNames("side-menu", props.classNames)}>
-      <motion.div
-        className="side-menu__substrate"
-        style={{ width, backgroundColor: color }}
-      ></motion.div>
-      <motion.div
-        className="side-menu__menu-wrapper"
-        style={{ x, width: 464, backgroundColor: color }}
-        dragMomentum={false}
-        drag="x"
-        dragConstraints={{ left: -400, right: 0 }}
-        onDragEnd={onMenuDragEnd}
-      >
-        <div className="side-menu__menu">
-          <motion.div
-            style={{ right, opacity: opacityReverse }}
-            className="side-menu__arrows-wrapper"
-          >
-            <IconRoundDoubleArrow className="side-menu__arrows" />
-          </motion.div>
-          <div className="side-menu__header">
+    <MotionConfig reducedMotion="user">
+      <div className={classNames("side-menu", props.classNames)}>
+        <motion.div
+          className="side-menu__substrate"
+          style={{ width, backgroundColor: color }}
+        ></motion.div>
+        <motion.div
+          className="side-menu__menu-wrapper"
+          style={{ x, width: 464, backgroundColor: color }}
+          dragMomentum={false}
+          drag="x"
+          dragConstraints={{ left: -400, right: 0 }}
+          onDragEnd={onMenuDragEnd}
+        >
+          <div className="side-menu__menu">
             <motion.div
-              className="side-menu__burger-wrapper"
               style={{ right, opacity: opacityReverse }}
+              className="side-menu__arrows-wrapper"
             >
-              <IconBurger className="side-menu__burger" />
+              <IconRoundDoubleArrow className="side-menu__arrows" />
             </motion.div>
-            <motion.div className="side-menu__logo-wrapper" style={{ opacity }}>
-              <Logo className="side-menu__logo" />
+            <div className="side-menu__header">
+              <motion.div
+                className="side-menu__burger-wrapper"
+                style={{ right, opacity: opacityReverse }}
+              >
+                <IconBurger className="side-menu__burger" />
+              </motion.div>
+              <motion.div
+                className="side-menu__logo-wrapper"
+                style={{ opacity }}
+              >
+                <Logo className="side-menu__logo" />
+              </motion.div>
+            </div>
+            <motion.div style={{ opacity }}>
+              <MenuNav classNames={["side-menu__menu-nav"]} items={SIDE_MENU} />
+            </motion.div>
+            <motion.div style={{ opacity }}>
+              <img
+                src={RickAndMortyImage}
+                className="side-menu__rick-morty-img"
+              />
             </motion.div>
           </div>
-          <motion.div style={{ opacity }}>
-            <MenuNav classNames={["side-menu__menu-nav"]} items={SIDE_MENU} />
-          </motion.div>
-          <motion.div style={{ opacity }}>
-            <img
-              src={RickAndMortyImage}
-              className="side-menu__rick-morty-img"
-            />
-          </motion.div>
-        </div>
-      </motion.div>
-    </div>
+        </motion.div>
+      </div>
+    </MotionConfig>
   );
 };
 
