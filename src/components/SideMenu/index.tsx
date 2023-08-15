@@ -2,6 +2,7 @@ import React from "react";
 import { classNames } from "../../utils/ClassNames";
 import { animate, motion, useMotionValue, useTransform } from "framer-motion";
 import IconBurger from "../../assets/icons/burger.svg";
+import Logo from "../../assets/svg/logo.svg";
 import { isForwardClosure } from "../../helpers/isForwardClosure";
 
 interface ISideMenuProps {
@@ -12,6 +13,7 @@ const SideMenu = (props: ISideMenuProps) => {
   const x = useMotionValue(-400);
   const width = useTransform(x, (value) => value + 50);
   const right = useTransform(x, (value) => Math.abs(value) - 400);
+  const opacity = useTransform(x, [-400, -64], [0, 1]);
   const isDragForward = isForwardClosure();
 
   const onMenuDragEnd = (event: any, info: any) => {
@@ -41,6 +43,9 @@ const SideMenu = (props: ISideMenuProps) => {
           <div className="side-menu__header">
             <motion.div className="side-menu__burger-wrapper" style={{ right }}>
               <IconBurger className="side-menu__burger" />
+            </motion.div>
+            <motion.div className="side-menu__logo-wrapper" style={{ opacity }}>
+              <Logo className="side-menu__logo" />
             </motion.div>
           </div>
         </div>
