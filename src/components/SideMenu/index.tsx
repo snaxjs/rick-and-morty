@@ -2,6 +2,7 @@ import React from "react";
 import { classNames } from "../../utils/ClassNames";
 import { animate, motion, useMotionValue, useTransform } from "framer-motion";
 import IconBurger from "../../assets/icons/burger.svg";
+import IconRoundDoubleArrow from "../../assets/icons/round-double-arrow.svg";
 import Logo from "../../assets/svg/logo.svg";
 import { isForwardClosure } from "../../helpers/isForwardClosure";
 
@@ -14,10 +15,10 @@ const SideMenu = (props: ISideMenuProps) => {
   const width = useTransform(x, (value) => value + 50);
   const right = useTransform(x, (value) => Math.abs(value) - 400);
   const opacity = useTransform(x, [-400, -64], [0, 1]);
+  const color = useTransform(x, [-400, -64], ["#262338", "#14142B"]);
   const isDragForward = isForwardClosure();
 
   const onMenuDragEnd = (event: any, info: any) => {
-    console.log(info.point.x);
     if (isDragForward(info.velocity.x)) {
       animate(x, -64, { duration: 0.7 });
     } else if (!isDragForward(info.velocity.x)) {
@@ -29,17 +30,20 @@ const SideMenu = (props: ISideMenuProps) => {
     <div className={classNames("side-menu", props.classNames)}>
       <motion.div
         className="side-menu__substrate"
-        style={{ width }}
+        style={{ width, backgroundColor: color }}
       ></motion.div>
       <motion.div
         className="side-menu__menu-wrapper"
-        style={{ x, width: 464 }}
+        style={{ x, width: 464, backgroundColor: color }}
         dragMomentum={false}
         drag="x"
         dragConstraints={{ left: -400, right: 0 }}
         onDragEnd={onMenuDragEnd}
       >
         <div className="side-menu__menu">
+          <motion.div style={{ right }} className="side-menu__arrows-wrapper">
+            <IconRoundDoubleArrow className="side-menu__arrows" />
+          </motion.div>
           <div className="side-menu__header">
             <motion.div className="side-menu__burger-wrapper" style={{ right }}>
               <IconBurger className="side-menu__burger" />

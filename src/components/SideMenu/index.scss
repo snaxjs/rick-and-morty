@@ -65,4 +65,30 @@
   &__logo {
     width: 60%;
   }
+
+  &__arrows {
+    fill: white;
+    stroke: white;
+    width: 38px;
+    height: 38px;
+  }
+
+  &__arrows-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    opacity: 0.4;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.9;
+      cursor: grabbing;
+    }
+  }
 }
