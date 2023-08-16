@@ -7,7 +7,7 @@ interface IPaginationProps {
   onClick?: (e: React.MouseEvent) => void;
 }
 
-const MAX_BUTTONS = 5;
+const MAX_BUTTONS = 4;
 
 const Button = (
   page: number,
@@ -30,29 +30,67 @@ const Button = (
 const Pagination = (props: IPaginationProps) => {
   const [elements, setElements] = useState([]);
 
-  const fillElements = () => {
-    let elems: number[] = [];
-    // flag - кол-во кнопок которые нужно отрендерить
-    const flag = props.pages < MAX_BUTTONS ? props.pages : MAX_BUTTONS;
-    const inc = props.currentPage > 1 ? props.currentPage - 1 : 1;
+  const fillElementsFromLast = (total: number, maxButtons: number) => {
+    let elems = [];
 
-    for (let i = inc; i < flag + inc; i++) {
-      if (i <= props.pages && i >= 1) {
-        elems.push(i);
+    for (let i = 0; i <= maxButtons; i++) {
+      elems.push(total - i);
+    }
+
+    return elems.reverse();
+  };
+
+  const fillElementsFromStart = (
+    maxButtons: number,
+    mayUpdateElems: boolean,
+    pages: number,
+    currentPage: number,
+  ) => {
+    let elems: number[] = [];
+
+    for (let i = 0; i <= maxButtons; i++) {
+      const isLast = i === maxButtons;
+
+      if (!isLast && mayUpdateElems) {
+        elems.push(i + currentPage);
+      }
+
+      if (isLast && mayUpdateElems) {
+        elems.push(pages);
       }
     }
 
-    elems[elems.length - 1] = props.pages;
+    return elems;
+  };
 
-    if (elems[elems.length - 1] - elems[elems.length - 2] !== 1) {
+  const isShowDots = (elements: number[]) => {
+    return elements[elements.length - 1] - elements[elements.length - 2] !== 1;
+  };
+
+  const fillElements = () => {
+    let elems: number[] = [];
+    const maxButtons = props.pages < MAX_BUTTONS ? props.pages : MAX_BUTTONS;
+    let mayUpdateElems =
+      elements[0] < props.pages - maxButtons || !elements.length;
+
+    elems = fillElementsFromStart(
+      maxButtons,
+      mayUpdateElems,
+      props.pages,
+      props.currentPage,
+    );
+
+    if (props.currentPage >= props.pages - maxButtons) {
+      elems = fillElementsFromLast(props.pages, maxButtons);
+    }
+
+    mayUpdateElems = elements[0] < props.pages - maxButtons || !elements.length;
+
+    if (isShowDots(elems)) {
       elems[elems.length - 2] = 0;
     }
 
-    if (
-      elems.includes(0) ||
-      (elems[elems.length - 1] - elems[elems.length - 2] === 1 &&
-        elems.length === flag)
-    ) {
+    if (mayUpdateElems) {
       setElements(elems);
     }
   };
