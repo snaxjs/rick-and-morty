@@ -34,7 +34,7 @@ const Pagination = (props: IPaginationProps) => {
     let elems = [];
 
     for (let i = 0; i <= maxButtons; i++) {
-      elems.push(total - i);
+      total - i && elems.push(total - i);
     }
 
     return elems.reverse();
