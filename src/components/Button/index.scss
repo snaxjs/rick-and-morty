@@ -1,0 +1,42 @@
+.storybook-button {
+  width: 129px;
+}
+.storybook-button__spinner {
+  width: 179px;
+}
+
+.storybook-button, .storybook-button__spinner {
+  height: 72px;
+  font-size: 18px;
+  font-weight: 600;
+  border: 0;
+  border-radius: 16px;
+
+  background-color: #610BEF;
+  color: white;
+
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  transition: 0.12s ease-in-out;
+
+  &:hover {
+    color: white;
+    background-color: #4700AB;
+  }
+
+  &:focus {
+    background-color: #610BEF;
+    outline: 8px solid #BFBEFC;
+  }
+
+  &:active {
+    background-color: #14142B;
+  }
+
+  &:disabled {
+    background-color: #AB80F5;
+  }
+}
+
