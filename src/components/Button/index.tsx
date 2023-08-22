@@ -1,20 +1,28 @@
-import React from 'react';
+import React from "react";
 import Spinner from "../Spinner";
 
 interface ButtonProps {
   isLoading?: boolean;
-  disable?: boolean;
-  label: string;
+  disabled?: boolean;
+  text: string;
   onClick?: () => void;
 }
 
-export const Button = (props: ButtonProps) => {
+const Button = (props: ButtonProps) => {
   return (
     <button
+      onClick={props.onClick}
       type="button"
-      className={`storybook-button${props.isLoading? ' storybook-button__spinner' : ''}`}
-    > {props.isLoading && <Spinner width={18} height={18} margin={18}/>}
-      {props.label}
+      disabled={props.disabled}
+      className={`storybook-button${
+        props.isLoading ? " storybook-button__spinner" : ""
+      }`}
+    >
+      {props.isLoading && (
+        <Spinner styles={{ width: 18, height: 18, marginRight: 18 }} />
+      )}
+      {props.text}
     </button>
   );
 };
+export default Button;

@@ -1,20 +1,16 @@
-import React from "react";
-import {FC} from 'react'
-import './index.scss'
+import React, { CSSProperties } from "react";
 interface SpinnerProps {
-    width?: number;
-    height?: number;
-    margin?: number;
+  styles?: CSSProperties;
 }
-const Spinner: FC<SpinnerProps> = ({width, height, margin}) => {
 
-    return (
-        <div className="lds-ring" style={{width: width, height: height, marginRight: margin}} >
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    )
-}
+const Spinner = (props: SpinnerProps) => {
+  return (
+    <div className="spinner" style={props.styles}>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  );
+};
 export default Spinner;

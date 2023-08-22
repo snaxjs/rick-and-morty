@@ -1,4 +1,4 @@
-.lds-ring {
+.spinner {
   display: inline-block;
   position: relative;
   width: 18px;
@@ -13,7 +13,7 @@
 
     border: 3px solid #fff;
     border-radius: 50%;
-    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    animation: spinner-animation 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     border-color: #fff transparent transparent transparent;
   }
   div:nth-child(1) {
@@ -27,8 +27,7 @@
   }
 }
 
-
-@keyframes lds-ring {
+@keyframes spinner-animation {
   0% {
     transform: rotate(0deg);
   }
