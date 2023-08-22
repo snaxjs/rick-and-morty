@@ -1,5 +1,4 @@
 import React from 'react';
-import './index.scss';
 import Spinner from "../Spinner";
 
 interface ButtonProps {
@@ -9,20 +8,13 @@ interface ButtonProps {
   onClick?: () => void;
 }
 
-
-export const Button = ({
-    isLoading,
-    label,
-    ...props
-  }: ButtonProps) => {
-
+export const Button = (props: ButtonProps) => {
   return (
     <button
       type="button"
-      className={isLoading? 'storybook-button__spinner' : 'storybook-button'}
-      {...props}
-    > {isLoading && <Spinner width={18} height={18} margin={18}/>}
-      {label}
+      className={`storybook-button${props.isLoading? ' storybook-button__spinner' : ''}`}
+    > {props.isLoading && <Spinner width={18} height={18} margin={18}/>}
+      {props.label}
     </button>
   );
 };

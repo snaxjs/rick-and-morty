@@ -1,18 +1,14 @@
+@import "../../scss/colors";
+
 .storybook-button {
   width: 129px;
-}
-.storybook-button__spinner {
-  width: 179px;
-}
-
-.storybook-button, .storybook-button__spinner {
   height: 72px;
   font-size: 18px;
   font-weight: 600;
   border: 0;
   border-radius: 16px;
 
-  background-color: #610BEF;
+  background-color: $color-primary;
   color: white;
 
   align-items: center;
@@ -23,20 +19,28 @@
 
   &:hover {
     color: white;
-    background-color: #4700AB;
+    background-color: $color-default-strong;
   }
 
   &:focus {
-    background-color: #610BEF;
-    outline: 8px solid #BFBEFC;
+    background-color: $color-primary;
+    outline: 8px solid $color-bg-strong;
   }
 
   &:active {
-    background-color: #14142B;
+    background-color: $color-grayscale-header;
   }
 
   &:disabled {
-    background-color: #AB80F5;
+    background-color: $color-default-weak;
+  }
+
+
+  &__spinner {
+    width: 179px;
   }
 }
+
+
+
 
