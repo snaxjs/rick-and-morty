@@ -4,7 +4,7 @@ import Spinner from "../Spinner";
 interface ButtonProps {
   isLoading?: boolean;
   disabled?: boolean;
-  text: string;
+  text?: string;
   onClick?: () => void;
 }
 
