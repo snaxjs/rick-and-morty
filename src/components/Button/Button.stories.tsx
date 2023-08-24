@@ -2,12 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import Button from "./index";
 import React from "react";
 
-// const meta: Meta<typeof Button> = {
-//   component: Button,
-// };
-
-const meta = {
-  title: "Buttons Rick and Morty",
+const meta: Meta<typeof Button> = {
+  title: "Buttons ",
   component: Button,
   argTypes: {
     isLoading: {
@@ -16,7 +12,8 @@ const meta = {
       control: "boolean",
     },
   },
-} satisfies Meta<typeof Button>;
+};
+
 export default meta;
 
 type Story = StoryObj<typeof Button>;
@@ -41,13 +38,3 @@ export const Primary: Story = {
     </div>
   ),
 };
-
-// export const Primary_WithSpinner: Story = {
-//   render: () => (
-//     <Button
-//       isLoading={true}
-//       text="Button"
-//       onClick={() => console.log("click!")}
-//     />
-//   ),
-// };

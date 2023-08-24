@@ -1,11 +1,17 @@
 import React, { CSSProperties } from "react";
-interface SpinnerProps {
+import { classNames } from "../../utils/ClassNames";
+
+interface ISpinnerProps {
+  classNames?: string[];
   styles?: CSSProperties;
 }
 
-const Spinner = (props: SpinnerProps) => {
+const Spinner = (props: ISpinnerProps) => {
   return (
-    <div className="spinner" style={props.styles}>
+    <div
+      className={classNames("spinner", props.classNames)}
+      style={props.styles}
+    >
       <div></div>
       <div></div>
       <div></div>
