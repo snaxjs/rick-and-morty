@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
-
 import CharCard from "./index";
 
 const meta: Meta<typeof CharCard> = {
@@ -10,15 +9,28 @@ const meta: Meta<typeof CharCard> = {
 export default meta;
 type Story = StoryObj<typeof CharCard>;
 
-export const Primary: Story = {
-  render: () => (
-    <CharCard
-      from="asdasd"
-      status={"dead"}
-      gender="male"
-      name="asdasd"
-      image="asdasd"
-      species="asdasd"
-    />
-  ),
+export const NoImage: Story = {
+  args: {
+    from: "Some location",
+    image: "not_found",
+    species: "Some species",
+    classNames: [],
+    gender: "male",
+    status: "alive",
+    name: "Rick Sanchez",
+  },
+  render: (args) => <CharCard {...args} />,
+};
+
+export const WithImage: Story = {
+  args: {
+    from: "Some location",
+    image: "not_found",
+    species: "Some species",
+    classNames: [],
+    gender: "male",
+    status: "alive",
+    name: "Rick Sanchez",
+  },
+  render: (args) => <CharCard {...args} />,
 };
