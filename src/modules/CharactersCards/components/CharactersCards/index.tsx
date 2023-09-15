@@ -60,7 +60,7 @@ export const CharactersCards = (props: ICharactersCardsProps) => {
         </div>
       )}
       <Pagination
-        totalPages={7}
+        totalPages={characters.totalPages}
         currentPage={characters.page}
         onClick={onPagination}
       />

@@ -7,19 +7,19 @@ interface IPaginationProps {
   onClick?: (e: React.MouseEvent) => void;
 }
 
-const MAX_BUTTONS = 4;
+const MAX_BUTTONS = 5;
 
 const Pagination = (props: IPaginationProps) => {
   const [elements, setElements] = useState([]);
 
   const elemsOutOfRange = (elems: number[], range: number) => {
-    return !!elems.find((item) => item > range);
+    return !!(elems.find((item) => item > range) && elems.length !== range);
   };
 
   const generateElems = (count: number, increment: number): number[] => {
     let elems: number[] = [];
 
-    Array.from(Array(count).keys()).map((page) => {
+    Array.from(Array(count).keys()).forEach((page) => {
       const pageNumber: number = page + increment;
       elems.push(pageNumber);
     });
@@ -28,10 +28,14 @@ const Pagination = (props: IPaginationProps) => {
   };
 
   const fillElems = () => {
-    let elems: number[] = generateElems(MAX_BUTTONS, props.currentPage);
+    const increment = props.totalPages > MAX_BUTTONS ? props.currentPage : 1;
+    const count =
+      props.totalPages > MAX_BUTTONS ? MAX_BUTTONS : props.totalPages;
+    let elems: number[] = generateElems(count, increment);
 
     if (elemsOutOfRange(elems, props.totalPages)) {
-      generateElems(MAX_BUTTONS, props.totalPages - MAX_BUTTONS);
+      const staticInc = props.totalPages - MAX_BUTTONS + 1;
+      elems = generateElems(MAX_BUTTONS, staticInc);
     }
 
     setElements(elems);
@@ -39,7 +43,7 @@ const Pagination = (props: IPaginationProps) => {
 
   useEffect(() => {
     fillElems();
-  }, [props.currentPage]);
+  }, [props.currentPage, props.totalPages]);
 
   return (
     <div className="pagination">
