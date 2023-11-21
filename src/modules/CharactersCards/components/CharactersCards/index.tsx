@@ -38,7 +38,7 @@ export const CharactersCards = (props: ICharactersCardsProps) => {
 
   return (
     <div className={classNames("characters-cards", props.classNames)}>
-      {!isLoading ? (
+      {isLoading ? (
         <Spinner color={COLORS.PRIMARY} />
       ) : (
         <div className="characters-cards__cards">

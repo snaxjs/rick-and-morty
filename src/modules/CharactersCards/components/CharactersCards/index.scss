@@ -11,18 +11,22 @@
 
   &__card-wrapper {
     flex-basis: 25%;
+    max-width: 25%;
     padding: 12px;
 
     @media screen and (max-width: $media-md) {
       flex-basis: 33.3%;
+      max-width: 33.3%;
     }
 
     @media screen and (max-width: $media-sm) {
       flex-basis: 50%;
+      max-width: 50%;
     }
 
     @media screen and (max-width: $media-xsm) {
       flex-basis: 100%;
+      max-width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
