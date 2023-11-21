@@ -6,6 +6,8 @@ import { ErrorHandler } from "../../../../utils/ErrorHandler";
 import { classNames } from "../../../../utils/ClassNames";
 import Pagination from "../../../../components/Pagination";
 import { useGetAllCharactersQuery } from "../../../../services/Characters/characters.api";
+import Spinner from "../../../../components/Spinner";
+import { COLORS } from "../../../../constants/colors";
 
 interface ICharactersCardsProps {
   classNames?: string[];
@@ -36,8 +38,8 @@ export const CharactersCards = (props: ICharactersCardsProps) => {
 
   return (
     <div className={classNames("characters-cards", props.classNames)}>
-      {isLoading ? (
-        <span>Loading...</span>
+      {!isLoading ? (
+        <Spinner color={COLORS.PRIMARY} />
       ) : (
         <div className="characters-cards__cards">
           {characters.list.map((char) => (
