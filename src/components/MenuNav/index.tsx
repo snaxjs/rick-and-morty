@@ -1,5 +1,5 @@
 import React from "react";
-import { classNames } from "../../utils/ClassNames";
+import { classNames } from "utils/ClassNames";
 import { IMenuNavItem } from "./interfaces";
 import { Link, useLocation } from "react-router-dom";
 

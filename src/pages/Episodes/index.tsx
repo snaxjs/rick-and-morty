@@ -1,6 +1,6 @@
 import React from "react";
-import { classNames } from "../../utils/ClassNames";
-import Container from "../../components/Container";
+import { classNames } from "utils/ClassNames";
+import Container from "components/Container";
 
 interface IEpisodesProps {
   classNames?: string[];

@@ -1,4 +1,4 @@
-import { ICharacter } from "../../services/Characters/interfaces";
+import { ICharacter } from "services/Characters/interfaces";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface ICharactersState {

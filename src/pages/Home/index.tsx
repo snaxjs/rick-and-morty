@@ -1,9 +1,9 @@
 import React from "react";
-import { CharactersCards } from "../../modules/CharactersCards";
-import { classNames } from "../../utils/ClassNames";
+import { CharactersCards } from "modules/CharactersCards";
+import { classNames } from "utils/ClassNames";
 import { useNavigate } from "react-router-dom";
-import { PATHS } from "../../constants/paths";
-import Container from "../../components/Container";
+import { PATHS } from "constants/paths";
+import Container from "components/Container";
 
 interface IHomePageProps {
   classNames?: string[];

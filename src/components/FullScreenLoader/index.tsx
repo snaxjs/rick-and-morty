@@ -3,7 +3,7 @@ import { LottieOptions, useLottie } from "lottie-react";
 interface IFullScreenLoaderProps {
   classNames?: string[];
 }
-const rocket = require("../../assets/lottie/rocket.json");
+const rocket = require("assets/lottie/rocket.json");
 const FullScreenLoader = (props: IFullScreenLoaderProps) => {
   const options: LottieOptions = {
     animationData: rocket,

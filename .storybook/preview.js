@@ -1,4 +1,4 @@
-import "../src/scss/index.scss";
+import "scss/index.scss";
 /** @type { import('@storybook/react').Preview } */
 const preview = {
   parameters: {

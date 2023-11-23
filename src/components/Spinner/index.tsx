@@ -1,5 +1,5 @@
 import React, { CSSProperties } from "react";
-import { classNames } from "../../utils/ClassNames";
+import { classNames } from "utils/ClassNames";
 
 interface ISpinnerProps {
   classNames?: string[];

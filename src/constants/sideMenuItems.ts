@@ -1,4 +1,4 @@
-import { IMenuNavItem } from "../components/MenuNav/interfaces";
+import { IMenuNavItem } from "components/MenuNav/interfaces";
 import { PATHS } from "./paths";
 
 export const SIDE_MENU: IMenuNavItem[] = [

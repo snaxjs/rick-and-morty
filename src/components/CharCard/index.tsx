@@ -1,6 +1,6 @@
 import React from "react";
-import { CharGenderTypes } from "../../services/Characters/types";
-import { classNames } from "../../utils/ClassNames";
+import { CharGenderTypes } from "services/Characters/types";
+import { classNames } from "utils/ClassNames";
 
 interface ICharCardProps {
   classNames?: string[];

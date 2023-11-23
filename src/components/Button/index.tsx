@@ -1,6 +1,6 @@
 import React from "react";
 import Spinner from "../Spinner";
-import { classNames } from "../../utils/ClassNames";
+import { classNames } from "utils/ClassNames";
 
 interface IButtonProps {
   classNames?: string[];

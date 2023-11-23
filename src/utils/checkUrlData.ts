@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ErrorHandler } from "../utils/ErrorHandler";
+import { ErrorHandler } from "utils/ErrorHandler";
 
 export const checkUrlData = async (url: string): Promise<boolean> => {
   let result = true;

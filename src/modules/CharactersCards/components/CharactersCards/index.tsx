@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../../../hooks/redux";
+import { useAppDispatch, useAppSelector } from "hooks/redux";
 import { setCharacters, setPage, setTotalPages } from "../../characters.slice";
-import CharCard from "../../../../components/CharCard";
-import { ErrorHandler } from "../../../../utils/ErrorHandler";
-import { classNames } from "../../../../utils/ClassNames";
-import Pagination from "../../../../components/Pagination";
-import { useGetAllCharactersQuery } from "../../../../services/Characters/characters.api";
-import Spinner from "../../../../components/Spinner";
-import { COLORS } from "../../../../constants/colors";
+import CharCard from "components/CharCard";
+import { ErrorHandler } from "utils/ErrorHandler";
+import { classNames } from "utils/ClassNames";
+import Pagination from "components/Pagination";
+import { useGetAllCharactersQuery } from "services/Characters/characters.api";
+import Spinner from "components/Spinner";
+import { COLORS } from "constants/colors";
 
 interface ICharactersCardsProps {
   classNames?: string[];
