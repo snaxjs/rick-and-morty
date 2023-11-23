@@ -1,6 +1,10 @@
 import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "hooks/redux";
-import { setCharacters, setPage, setTotalPages } from "../../characters.slice";
+import {
+  setCharacters,
+  setPage,
+  setTotalPages,
+} from "modules/CharactersCards/characters.slice";
 import CharCard from "components/CharCard";
 import { ErrorHandler } from "utils/ErrorHandler";
 import { classNames } from "utils/ClassNames";
