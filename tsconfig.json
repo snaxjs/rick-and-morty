@@ -9,6 +9,21 @@
     "moduleResolution": "Node",
     "typeRoots": ["./node_modules/@types", "./src/tsTypes"],
     "noUnusedLocals": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@assets": ["assets"],
+      "@components": ["components"],
+      "@configs": ["configs"],
+      "@constants": ["constants"],
+      "@hooks": ["hooks"],
+      "@modules": ["modules"],
+      "@pages": ["pages"],
+      "@routes": ["routes"],
+      "@scss": ["scss"],
+      "@services": ["services"],
+      "@tsTypes": ["tsTypes"],
+      "@utils": ["utils"],
+    }
   },
   "exclude": ["node_modules", "dist"]
 }
