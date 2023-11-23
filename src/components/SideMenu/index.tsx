@@ -10,7 +10,7 @@ import {
 import IconBurger from "../../assets/icons/burger.svg";
 import IconRoundDoubleArrow from "../../assets/icons/round-double-arrow.svg";
 import Logo from "../../assets/svg/logo.svg";
-import { isForwardClosure } from "../../helpers/isForwardClosure";
+import { isForwardClosure } from "../../utils/isForwardClosure";
 import MenuNav from "../MenuNav";
 import { SIDE_MENU } from "../../constants/sideMenuItems";
 import RickAndMortyImage from "../../assets/png/rick_and_morty.png";
