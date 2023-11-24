@@ -6,6 +6,7 @@ import { useAppDispatch } from "hooks/redux";
 import IconSwitch from "assets/icons/switch.svg";
 import { PaginationSwitchTypes } from "./index.types";
 import { classNames } from "../../utils/ClassNames";
+import Input from "../Input";
 
 interface IPaginationProps {
   classNames?: string[];
@@ -19,7 +20,7 @@ const MAX_BUTTONS = 4;
 
 const Pagination = (props: IPaginationProps) => {
   const [elements, setElements] = useState([]);
-  const [type, setType] = useState<PaginationSwitchTypes>("numbers");
+  const [type, setType] = useState<PaginationSwitchTypes>("page");
   const dispatch = useAppDispatch();
 
   const elemsOutOfRange = (elems: number[], range: number) => {
@@ -123,7 +124,7 @@ const Pagination = (props: IPaginationProps) => {
         </div>
       ) : (
         <div className="pagination__page-input">
-          <input type="text" />
+          <Input type="text" />
         </div>
       )}
       <RoundButton
