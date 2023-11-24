@@ -1,5 +1,5 @@
 import React from "react";
-import { classNames } from "../../utils/ClassNames";
+import { classNames } from "utils/ClassNames";
 import {
   animate,
   motion,
@@ -7,13 +7,13 @@ import {
   useTransform,
   MotionConfig,
 } from "framer-motion";
-import IconBurger from "../../assets/icons/burger.svg";
-import IconRoundDoubleArrow from "../../assets/icons/round-double-arrow.svg";
-import Logo from "../../assets/svg/logo.svg";
-import { isForwardClosure } from "../../helpers/isForwardClosure";
-import MenuNav from "../MenuNav";
-import { SIDE_MENU } from "../../constants/sideMenuItems";
-import RickAndMortyImage from "../../assets/png/rick_and_morty.png";
+import IconBurger from "assets/icons/burger.svg";
+import IconRoundDoubleArrow from "assets/icons/round-double-arrow.svg";
+import Logo from "assets/svg/logo.svg";
+import { isForwardClosure } from "utils/isForwardClosure";
+import MenuNav from "components/MenuNav";
+import { SIDE_MENU } from "constants/sideMenuItems";
+import RickAndMortyImage from "assets/png/rick_and_morty.png";
 
 interface ISideMenuProps {
   classNames?: string[];

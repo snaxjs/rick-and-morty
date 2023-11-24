@@ -1,114 +1,112 @@
 import React, { useEffect, useState } from "react";
+import RoundButton from "components/RoundButton";
+import { COLORS } from "constants/colors";
+import { useAppDispatch } from "hooks/redux";
 
 interface IPaginationProps {
   classNames?: string[];
-  pages: number;
+  totalPages: number;
   currentPage: number;
   onClick?: (e: React.MouseEvent) => void;
+  setPage?: any;
 }
 
-const MAX_BUTTONS = 4;
-
-const Button = (
-  page: number,
-  onClick?: (e: React.MouseEvent) => void,
-  className?: string,
-) => {
-  return (
-    <button
-      className={className}
-      key={page}
-      data-page={page}
-      onClick={onClick}
-      disabled={!page}
-    >
-      {page ? page : "..."}
-    </button>
-  );
-};
+const MAX_BUTTONS = 5;
 
 const Pagination = (props: IPaginationProps) => {
   const [elements, setElements] = useState([]);
+  const dispatch = useAppDispatch();
 
-  const fillElementsFromLast = (total: number, maxButtons: number) => {
-    let elems = [];
-
-    for (let i = 0; i <= maxButtons; i++) {
-      total - i && elems.push(total - i);
-    }
-
-    return elems.reverse();
+  const elemsOutOfRange = (elems: number[], range: number) => {
+    return !!(elems.find((item) => item > range) && elems.length !== range);
   };
 
-  const fillElementsFromStart = (
-    maxButtons: number,
-    mayUpdateElems: boolean,
-    pages: number,
-    currentPage: number,
-  ) => {
+  const generateElems = (count: number, increment: number): number[] => {
     let elems: number[] = [];
 
-    for (let i = 0; i <= maxButtons; i++) {
-      const isLast = i === maxButtons;
-
-      if (!isLast && mayUpdateElems) {
-        elems.push(i + currentPage);
-      }
-
-      if (isLast && mayUpdateElems) {
-        elems.push(pages);
-      }
-    }
+    Array.from(Array(count).keys()).forEach((page) => {
+      const pageNumber: number = page + increment;
+      elems.push(pageNumber);
+    });
 
     return elems;
   };
 
-  const isShowDots = (elements: number[]) => {
-    return elements[elements.length - 1] - elements[elements.length - 2] !== 1;
+  const fillElems = () => {
+    const increment = props.totalPages > MAX_BUTTONS ? props.currentPage : 1;
+    const count =
+      props.totalPages > MAX_BUTTONS ? MAX_BUTTONS : props.totalPages;
+    let elems: number[] = generateElems(count, increment);
+
+    if (elemsOutOfRange(elems, props.totalPages)) {
+      const staticInc = props.totalPages - MAX_BUTTONS + 1;
+      elems = generateElems(MAX_BUTTONS, staticInc);
+    }
+
+    setElements(elems);
   };
 
-  const fillElements = () => {
-    let elems: number[] = [];
-    const maxButtons = props.pages < MAX_BUTTONS ? props.pages : MAX_BUTTONS;
-    let mayUpdateElems =
-      elements[0] < props.pages - maxButtons || !elements.length;
+  const onArrowClick = (e: React.MouseEvent) => {
+    const isPrev = e.currentTarget.getAttribute("data-type") === "prev";
 
-    elems = fillElementsFromStart(
-      maxButtons,
-      mayUpdateElems,
-      props.pages,
-      props.currentPage,
-    );
-
-    if (props.currentPage >= props.pages - maxButtons) {
-      elems = fillElementsFromLast(props.pages, maxButtons);
+    if (isPrev && props.setPage) {
+      const page = props.currentPage - 1 || props.currentPage;
+      dispatch(props.setPage(page));
     }
 
-    mayUpdateElems = elements[0] < props.pages - maxButtons || !elements.length;
-
-    if (isShowDots(elems)) {
-      elems[elems.length - 2] = 0;
-    }
-
-    if (mayUpdateElems) {
-      setElements(elems);
+    if (!isPrev && props.setPage) {
+      const page =
+        props.currentPage + MAX_BUTTONS >= props.totalPages - MAX_BUTTONS + 1
+          ? props.totalPages - MAX_BUTTONS + 1
+          : props.currentPage + MAX_BUTTONS;
+      dispatch(props.setPage(page));
     }
   };
 
   useEffect(() => {
-    fillElements();
-  }, [props.pages, props.currentPage]);
+    fillElems();
+  }, [props.currentPage, props.totalPages]);
 
   return (
     <div className="pagination">
-      {elements.map((page) => {
-        const isCurrent =
-          page === props.currentPage ? " pagination__button_current" : "";
-        const isDots = !page ? " pagination__button_dots" : "";
-        const className = `pagination__button${isCurrent}${isDots}`;
-
-        return Button(page, props.onClick, className);
-      })}
+      {props.currentPage === 1 ? null : (
+        <RoundButton
+          color={COLORS.GRAYSCALE_LABEL}
+          onClick={onArrowClick}
+          attributes={[
+            {
+              name: "data-type",
+              value: "prev",
+            },
+          ]}
+        >
+          {"<"}
+        </RoundButton>
+      )}
+      {!!elements.length &&
+        elements.map((page) => {
+          return (
+            <RoundButton
+              key={page}
+              onClick={props.onClick}
+              attributes={[{ name: "data-page", value: page }]}
+            >
+              {page}
+            </RoundButton>
+          );
+        })}
+      <RoundButton
+        color={COLORS.GRAYSCALE_LABEL}
+        onClick={onArrowClick}
+        attributes={[
+          {
+            name: "data-type",
+            value: "next",
+          },
+        ]}
+      >
+        {">>"}
+      </RoundButton>
     </div>
   );
 };

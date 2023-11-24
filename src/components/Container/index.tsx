@@ -1,10 +1,10 @@
 import React, { CSSProperties, JSX } from "react";
-import { classNames } from "../../utils/ClassNames";
+import { classNames } from "utils/ClassNames";
 import {
   MAX_CONTAINER_WIDTH,
   PAGE_DEFAULT_PADDING_TOP,
   SIDE_MENU_WIDTH,
-} from "../../constants/media";
+} from "constants/media";
 
 interface IContainerProps {
   classNames?: string[];

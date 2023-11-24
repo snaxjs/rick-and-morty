@@ -1,7 +1,7 @@
-import React, { CSSProperties } from "react";
-import Spinner from "../Spinner";
-import { classNames } from "../../utils/ClassNames";
-import { VariantsTypes } from "../../types/global.types";
+import React, {CSSProperties} from "react";
+import Spinner from "components/Spinner";
+import { classNames } from "utils/ClassNames";
+import { VariantsTypes } from "types/global.types";
 
 interface IButtonProps {
   classNames?: string[];

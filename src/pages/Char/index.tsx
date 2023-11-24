@@ -1,6 +1,6 @@
 import React from "react";
-import { classNames } from "../../utils/ClassNames";
-import { useGetCharacterQuery } from "../../services/Characters/characters.api";
+import { classNames } from "utils/ClassNames";
+import { useGetCharacterQuery } from "services/Characters/characters.api";
 import { useParams } from "react-router-dom";
 interface ICharPageProps {
   classNames?: string[];

@@ -1,11 +1,17 @@
 import React, { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../../../hooks/redux";
-import { setCharacters, setPage, setTotalPages } from "../../characters.slice";
-import CharCard from "../../../../components/CharCard";
-import { ErrorHandler } from "../../../../utils/ErrorHandler";
-import { classNames } from "../../../../utils/ClassNames";
-import Pagination from "../../../../components/Pagination";
-import { useGetAllCharactersQuery } from "../../../../services/Characters/characters.api";
+import { useAppDispatch, useAppSelector } from "hooks/redux";
+import {
+  setCharacters,
+  setPage,
+  setTotalPages,
+} from "modules/CharactersCards/characters.slice";
+import CharCard from "components/CharCard";
+import { ErrorHandler } from "utils/ErrorHandler";
+import { classNames } from "utils/ClassNames";
+import Pagination from "components/Pagination";
+import { useGetAllCharactersQuery } from "services/Characters/characters.api";
+import Spinner from "components/Spinner";
+import { COLORS } from "constants/colors";
 
 interface ICharactersCardsProps {
   classNames?: string[];
@@ -37,7 +43,7 @@ export const CharactersCards = (props: ICharactersCardsProps) => {
   return (
     <div className={classNames("characters-cards", props.classNames)}>
       {isLoading ? (
-        <span>Loading...</span>
+        <Spinner color={COLORS.PRIMARY} />
       ) : (
         <div className="characters-cards__cards">
           {characters.list.map((char) => (
@@ -60,9 +66,10 @@ export const CharactersCards = (props: ICharactersCardsProps) => {
         </div>
       )}
       <Pagination
-        pages={characters.totalPages}
+        totalPages={characters.totalPages}
         currentPage={characters.page}
         onClick={onPagination}
+        setPage={setPage}
       />
     </div>
   );

@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { GOOGLE_SEARCH_API } from "../../constants/API";
+import { GOOGLE_SEARCH_API } from "constants/API";
 import { EndpointBuilder } from "@reduxjs/toolkit/dist/query/endpointDefinitions";
 
 export const googleSearchApi = createApi({

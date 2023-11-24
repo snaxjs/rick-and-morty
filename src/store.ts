@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 // Api reducers
-import { characterApi } from "./services/Characters/characters.api";
+import { characterApi } from "services/Characters/characters.api";
 // Reducers
-import { charactersReducer } from "./modules/CharactersCards/index";
-import { googleSearchApi } from "./services/GoogleSearchApi/googleSearch.api";
+import { charactersReducer } from "modules/CharactersCards/index";
+import { googleSearchApi } from "services/GoogleSearchApi/googleSearch.api";
 
 export const store = configureStore({
   reducer: {

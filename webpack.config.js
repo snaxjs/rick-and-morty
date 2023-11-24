@@ -121,6 +121,21 @@ const config = {
   },
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js"],
+    alias: {
+      assets: path.resolve(__dirname, "src/assets/"),
+      components: path.resolve(__dirname, "src/components/"),
+      configs: path.resolve(__dirname, "src/configs/"),
+      constants: path.resolve(__dirname, "src/constants/"),
+      hooks: path.resolve(__dirname, "src/hooks/"),
+      modules: path.resolve(__dirname, "src/modules/"),
+      pages: path.resolve(__dirname, "src/pages/"),
+      routes: path.resolve(__dirname, "src/routes/"),
+      scss: path.resolve(__dirname, "src/scss/"),
+      services: path.resolve(__dirname, "src/services/"),
+      tsTypes: path.resolve(__dirname, "src/tsTypes/"),
+      utils: path.resolve(__dirname, "src/utils/"),
+      interfaces: path.resolve(__dirname, "src/interfaces/"),
+    },
   },
 };
 
