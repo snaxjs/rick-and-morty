@@ -7,7 +7,9 @@
     "noImplicitAny": true,
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "Node",
-    "typeRoots": ["./node_modules/@types", "./src/tsTypes"],
+    "typeRoots": ["./node_modules/@types",
+      "./src/types"
+    ],
     "noUnusedLocals": true,
     "baseUrl": "./src",
     "paths": {
@@ -21,7 +23,7 @@
       "@routes": ["routes"],
       "@scss": ["scss"],
       "@services": ["services"],
-      "@tsTypes": ["tsTypes"],
+      "@types": ["types"],
       "@utils": ["utils"],
       "@interfaces": ["interfaces"],
     }

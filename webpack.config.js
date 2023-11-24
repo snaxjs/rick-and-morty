@@ -132,7 +132,7 @@ const config = {
       routes: path.resolve(__dirname, "src/routes/"),
       scss: path.resolve(__dirname, "src/scss/"),
       services: path.resolve(__dirname, "src/services/"),
-      tsTypes: path.resolve(__dirname, "src/tsTypes/"),
+      types: path.resolve(__dirname, "src/types/"),
       utils: path.resolve(__dirname, "src/utils/"),
       interfaces: path.resolve(__dirname, "src/interfaces/"),
     },
