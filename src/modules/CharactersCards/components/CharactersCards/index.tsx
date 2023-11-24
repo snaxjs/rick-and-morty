@@ -69,6 +69,7 @@ export const CharactersCards = (props: ICharactersCardsProps) => {
         totalPages={characters.totalPages}
         currentPage={characters.page}
         onClick={onPagination}
+        setPage={setPage}
       />
     </div>
   );

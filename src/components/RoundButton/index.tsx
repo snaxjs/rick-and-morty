@@ -5,7 +5,7 @@ import { IHTMLAttribute } from "interfaces/default";
 import { COLORS } from "../../constants/colors";
 
 interface IRoundButtonProps {
-  children?: JSX.Element | JSX.Element[];
+  children?: JSX.Element | JSX.Element[] | any;
   classNames?: string[];
   onClick?: (e: React.MouseEvent) => void;
   attributes?: IHTMLAttribute[];
@@ -15,7 +15,7 @@ interface IRoundButtonProps {
 const RoundButton = (props: IRoundButtonProps) => {
   const ref = useRef(null);
   const styles: CSSProperties = {
-    backgroundColor: props.color || COLORS.PRIMARY,
+    backgroundColor: props.color || COLORS.GRAYSCALE_BODY,
   };
 
   useEffect(() => {

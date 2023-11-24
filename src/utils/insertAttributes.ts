@@ -5,7 +5,9 @@ export const insertAttributes = (
   ref: React.RefObject<HTMLButtonElement | any>,
   attributes: IHTMLAttribute[],
 ) => {
-  attributes.forEach((attr) => {
-    ref.current.setAttribute(attr.name, attr.value);
-  });
+  if (attributes?.length) {
+    attributes.forEach((attr) => {
+      ref.current.setAttribute(attr.name, attr.value);
+    });
+  }
 };

@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from "react";
 import RoundButton from "components/RoundButton";
+import { COLORS } from "constants/colors";
+import { useAppDispatch } from "hooks/redux";
 
 interface IPaginationProps {
   classNames?: string[];
   totalPages: number;
   currentPage: number;
   onClick?: (e: React.MouseEvent) => void;
+  setPage?: any;
 }
 
 const MAX_BUTTONS = 5;
 
 const Pagination = (props: IPaginationProps) => {
   const [elements, setElements] = useState([]);
+  const dispatch = useAppDispatch();
 
   const elemsOutOfRange = (elems: number[], range: number) => {
     return !!(elems.find((item) => item > range) && elems.length !== range);
@@ -42,12 +46,43 @@ const Pagination = (props: IPaginationProps) => {
     setElements(elems);
   };
 
+  const onArrowClick = (e: React.MouseEvent) => {
+    const isPrev = e.currentTarget.getAttribute("data-type") === "prev";
+
+    if (isPrev && props.setPage) {
+      const page = props.currentPage - 1 || props.currentPage;
+      dispatch(props.setPage(page));
+    }
+
+    if (!isPrev && props.setPage) {
+      const page =
+        props.currentPage + MAX_BUTTONS >= props.totalPages - MAX_BUTTONS + 1
+          ? props.totalPages - MAX_BUTTONS + 1
+          : props.currentPage + MAX_BUTTONS;
+      dispatch(props.setPage(page));
+    }
+  };
+
   useEffect(() => {
     fillElems();
   }, [props.currentPage, props.totalPages]);
 
   return (
     <div className="pagination">
+      {props.currentPage === 1 ? null : (
+        <RoundButton
+          color={COLORS.GRAYSCALE_LABEL}
+          onClick={onArrowClick}
+          attributes={[
+            {
+              name: "data-type",
+              value: "prev",
+            },
+          ]}
+        >
+          {"<"}
+        </RoundButton>
+      )}
       {!!elements.length &&
         elements.map((page) => {
           return (
@@ -60,6 +95,18 @@ const Pagination = (props: IPaginationProps) => {
             </RoundButton>
           );
         })}
+      <RoundButton
+        color={COLORS.GRAYSCALE_LABEL}
+        onClick={onArrowClick}
+        attributes={[
+          {
+            name: "data-type",
+            value: "next",
+          },
+        ]}
+      >
+        {">>"}
+      </RoundButton>
     </div>
   );
 };
