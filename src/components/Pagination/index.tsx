@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import RoundButton from "components/RoundButton";
 
 interface IPaginationProps {
   classNames?: string[];
@@ -50,9 +51,13 @@ const Pagination = (props: IPaginationProps) => {
       {!!elements.length &&
         elements.map((page) => {
           return (
-            <button key={page} onClick={props.onClick} data-page={page}>
+            <RoundButton
+              key={page}
+              onClick={props.onClick}
+              attributes={[{ name: "data-page", value: page }]}
+            >
               {page}
-            </button>
+            </RoundButton>
           );
         })}
     </div>

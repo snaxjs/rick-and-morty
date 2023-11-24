@@ -134,6 +134,7 @@ const config = {
       services: path.resolve(__dirname, "src/services/"),
       tsTypes: path.resolve(__dirname, "src/tsTypes/"),
       utils: path.resolve(__dirname, "src/utils/"),
+      interfaces: path.resolve(__dirname, "src/interfaces/"),
     },
   },
 };

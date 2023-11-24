@@ -23,6 +23,7 @@
       "@services": ["services"],
       "@tsTypes": ["tsTypes"],
       "@utils": ["utils"],
+      "@interfaces": ["interfaces"],
     }
   },
   "exclude": ["node_modules", "dist"]
