@@ -7,7 +7,7 @@ import { COLORS } from "../../constants/colors";
 interface IRoundButtonProps {
   children?: JSX.Element | JSX.Element[] | any;
   classNames?: string[];
-  onClick?: (e: React.MouseEvent) => void;
+  onClick?: (e?: React.MouseEvent) => void;
   attributes?: IHTMLAttribute[];
   color?: string;
 }
