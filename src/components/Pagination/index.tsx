@@ -4,7 +4,7 @@ import { COLORS } from "constants/colors";
 import { useAppDispatch } from "hooks/redux";
 import IconSwitch from "assets/icons/switch.svg";
 import { PaginationSwitchEnum } from "./data_structures";
-import { class_names } from "utils/class_names";
+import { classNames } from "utils/class_names";
 import Input from "components/Input";
 
 interface IPaginationProps {
@@ -19,6 +19,7 @@ const MAX_BUTTONS = 4;
 
 const Pagination = (props: IPaginationProps) => {
   const [elements, setElements] = useState([]);
+  //@ts-ignore
   const [type, setType] = useState<PaginationSwitchEnum>(
     PaginationSwitchEnum.numbers,
   );
@@ -83,53 +84,60 @@ const Pagination = (props: IPaginationProps) => {
   }, [props.currentPage, props.totalPages]);
 
   return (
-    <div className={class_names("pagination", props.classNames)}>
-      {type === PaginationSwitchEnum.numbers ? (
-        <div className="pagination__numbers">
-          {props.currentPage === 1 ? null : (
+    <div className={classNames("pagination", props.classNames)}>
+      <div className="pagination__controls-wrapper">
+        <div
+          className={classNames("pagination__controls", [
+            type === PaginationSwitchEnum.page
+              ? "pagination__controls_show-page"
+              : "",
+          ])}
+        >
+          <div className={"pagination__numbers"}>
+            {props.currentPage === 1 ? null : (
+              <RoundButton
+                color={COLORS.GRAYSCALE_LABEL}
+                onClick={onArrowClick}
+                attributes={[
+                  {
+                    name: "data-type",
+                    value: "prev",
+                  },
+                ]}
+              >
+                {"<"}
+              </RoundButton>
+            )}
+            {!!elements.length &&
+              elements.map((page) => {
+                return (
+                  <RoundButton
+                    key={page}
+                    onClick={props.onClick}
+                    attributes={[{ name: "data-page", value: page }]}
+                  >
+                    {page}
+                  </RoundButton>
+                );
+              })}
             <RoundButton
               color={COLORS.GRAYSCALE_LABEL}
               onClick={onArrowClick}
               attributes={[
                 {
                   name: "data-type",
-                  value: "prev",
+                  value: "next",
                 },
               ]}
             >
-              {"<"}
+              {">>"}
             </RoundButton>
-          )}
-          {!!elements.length &&
-            elements.map((page) => {
-              return (
-                <RoundButton
-                  key={page}
-                  onClick={props.onClick}
-                  attributes={[{ name: "data-page", value: page }]}
-                >
-                  {page}
-                </RoundButton>
-              );
-            })}
-          <RoundButton
-            color={COLORS.GRAYSCALE_LABEL}
-            onClick={onArrowClick}
-            attributes={[
-              {
-                name: "data-type",
-                value: "next",
-              },
-            ]}
-          >
-            {">>"}
-          </RoundButton>
+          </div>
+          <div className="pagination__page-input">
+            <Input type="text" />
+          </div>
         </div>
-      ) : (
-        <div className="pagination__page-input">
-          <Input type="text" />
-        </div>
-      )}
+      </div>
       <RoundButton
         classNames={["pagination__switch"]}
         color={COLORS.GRAYSCALE_LABEL}

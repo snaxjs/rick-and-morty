@@ -1,5 +1,5 @@
 import React, { CSSProperties } from "react";
-import { class_names } from "utils/class_names";
+import { classNames } from "utils/class_names";
 
 interface ISpinnerProps {
   classNames?: string[];
@@ -11,7 +11,7 @@ const Spinner = (props: ISpinnerProps) => {
   const color: string = props.color || "#fff";
   return (
     <div
-      className={class_names("spinner", props.classNames)}
+      className={classNames("spinner", props.classNames)}
       style={{
         width: 18,
         height: 18,

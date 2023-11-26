@@ -1,5 +1,5 @@
 import React from "react";
-import { class_names } from "utils/class_names";
+import { classNames } from "utils/class_names";
 import {
   animate,
   motion,
@@ -42,7 +42,7 @@ const SideMenu = (props: ISideMenuProps) => {
 
   return (
     <MotionConfig reducedMotion="user">
-      <div className={class_names("side-menu", props.classNames)}>
+      <div className={classNames("side-menu", props.classNames)}>
         <motion.div
           className="side-menu__substrate"
           style={{ width, backgroundColor: color }}

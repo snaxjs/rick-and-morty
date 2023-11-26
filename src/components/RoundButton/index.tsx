@@ -1,5 +1,5 @@
 import React, { CSSProperties, JSX, useEffect, useRef } from "react";
-import { class_names } from "utils/class_names";
+import { classNames } from "utils/class_names";
 import { insert_attributes } from "utils/insert_attributes";
 import { IHTMLAttribute } from "interfaces/default";
 import { COLORS } from "../../constants/colors";
@@ -27,7 +27,7 @@ const RoundButton = (props: IRoundButtonProps) => {
       style={styles}
       ref={ref}
       onClick={props.onClick}
-      className={class_names("round-button", props.classNames)}
+      className={classNames("round-button", props.classNames)}
     >
       <span className="round-button__content-wrapper">{props.children}</span>
     </button>

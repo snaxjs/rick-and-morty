@@ -1,14 +1,34 @@
 .pagination {
   display: flex;
-  align-items: center;
 
   &__numbers {
     display: flex;
     gap: 8px;
+    justify-content: center;
+    margin-bottom: 4px;
+  }
+
+  &__page-input {
   }
 
   &__switch {
     margin-left: 8px;
+    transform: translateY(2px);
+  }
+
+  &__controls-wrapper {
+    position: relative;
+    max-height: 36px;
+    padding: 2px;
+    overflow: hidden;
+  }
+
+  &__controls {
+    transition: transform 0.4s ease-out;
+
+    &_show-page {
+      transform: translateY(-34px);
+    }
   }
 
   &__button {

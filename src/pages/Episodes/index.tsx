@@ -1,5 +1,5 @@
 import React from "react";
-import { class_names } from "utils/class_names";
+import { classNames } from "utils/class_names";
 import Container from "components/Container";
 
 interface IEpisodesProps {
@@ -8,7 +8,7 @@ interface IEpisodesProps {
 
 const EpisodesPage = (props: IEpisodesProps) => {
   return (
-    <main className={class_names("episodes-page", props.classNames)}>
+    <main className={classNames("episodes-page", props.classNames)}>
       <Container>
         <h1 className="title episodes-page__title">Эпизоды</h1>
       </Container>

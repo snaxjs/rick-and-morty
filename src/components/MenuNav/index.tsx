@@ -1,5 +1,5 @@
 import React from "react";
-import { class_names } from "utils/class_names";
+import { classNames } from "utils/class_names";
 import { IMenuNavItem } from "./interfaces";
 import { Link, useLocation } from "react-router-dom";
 
@@ -12,7 +12,7 @@ const MenuNav = (props: IMenuNavProps) => {
   const location = useLocation();
 
   return (
-    <nav className={class_names("menu-nav", props.classNames)}>
+    <nav className={classNames("menu-nav", props.classNames)}>
       <ul className="menu-nav__list">
         {props.items.map((item: IMenuNavItem) => {
           const Icon = item?.icon && item.icon;

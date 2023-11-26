@@ -7,7 +7,7 @@ import {
 } from "modules/CharactersCards/characters.slice";
 import CharCard from "components/CharCard";
 import { Error_handler } from "utils/error_handler";
-import { class_names } from "utils/class_names";
+import { classNames } from "utils/class_names";
 import Pagination from "components/Pagination/index";
 import { useGetAllCharactersQuery } from "services/Characters/characters.api";
 import Spinner from "components/Spinner";
@@ -41,7 +41,7 @@ export const CharactersCards = (props: ICharactersCardsProps) => {
   };
 
   return (
-    <div className={class_names("characters-cards", props.classNames)}>
+    <div className={classNames("characters-cards", props.classNames)}>
       {isLoading ? (
         <Spinner color={COLORS.PRIMARY} />
       ) : (
