@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import RoundButton from "components/RoundButton";
 import { COLORS } from "constants/colors";
 import { useAppDispatch } from "hooks/redux";
-//import { PaginationSwitchTypes } from "./index.types";
 import IconSwitch from "assets/icons/switch.svg";
-import { PaginationSwitchTypes } from "./index.types";
-import { classNames } from "../../utils/ClassNames";
-import Input from "../Input";
+import { PaginationSwitchEnum } from "./data_structures";
+import { class_names } from "utils/class_names";
+import Input from "components/Input";
 
 interface IPaginationProps {
   classNames?: string[];
@@ -20,7 +19,9 @@ const MAX_BUTTONS = 4;
 
 const Pagination = (props: IPaginationProps) => {
   const [elements, setElements] = useState([]);
-  const [type, setType] = useState<PaginationSwitchTypes>("page");
+  const [type, setType] = useState<PaginationSwitchEnum>(
+    PaginationSwitchEnum.numbers,
+  );
   const dispatch = useAppDispatch();
 
   const elemsOutOfRange = (elems: number[], range: number) => {
@@ -70,8 +71,10 @@ const Pagination = (props: IPaginationProps) => {
   };
 
   const onSwitchClick = () => {
-    setType((prev: PaginationSwitchTypes) =>
-      prev === "page" ? "numbers" : "page",
+    setType((prev: PaginationSwitchEnum) =>
+      prev === PaginationSwitchEnum.page
+        ? PaginationSwitchEnum.numbers
+        : PaginationSwitchEnum.page,
     );
   };
 
@@ -80,8 +83,8 @@ const Pagination = (props: IPaginationProps) => {
   }, [props.currentPage, props.totalPages]);
 
   return (
-    <div className={classNames("pagination", props.classNames)}>
-      {type === "numbers" ? (
+    <div className={class_names("pagination", props.classNames)}>
+      {type === PaginationSwitchEnum.numbers ? (
         <div className="pagination__numbers">
           {props.currentPage === 1 ? null : (
             <RoundButton

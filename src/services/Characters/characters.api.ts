@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { API_BASE_URL } from "constants/API";
+import { API_BASE_URL } from "constants/api";
 import { EndpointBuilder } from "@reduxjs/toolkit/dist/query/endpointDefinitions";
 import { IGetAllCharactersResponse } from "./interfaces";
 

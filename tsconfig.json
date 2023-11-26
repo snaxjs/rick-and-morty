@@ -8,7 +8,7 @@
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "Node",
     "typeRoots": ["./node_modules/@types",
-      "./src/types"
+      "types",
     ],
     "noUnusedLocals": true,
     "baseUrl": "./src",

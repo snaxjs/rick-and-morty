@@ -1,6 +1,6 @@
 import React from "react";
 import { CharactersCards } from "modules/CharactersCards";
-import { classNames } from "utils/ClassNames";
+import { class_names } from "utils/class_names";
 import { useNavigate } from "react-router-dom";
 import { PATHS } from "constants/paths";
 import Container from "components/Container";
@@ -16,7 +16,7 @@ const HomePage = (props: IHomePageProps) => {
   };
 
   return (
-    <main className={classNames("home-page", props.classNames)}>
+    <main className={class_names("home-page", props.classNames)}>
       <Container>
         <h1 className="title home-page__title">Персонажи</h1>
         <CharactersCards onCardClick={onCharCardClick} />

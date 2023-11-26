@@ -6,9 +6,9 @@ import {
   setTotalPages,
 } from "modules/CharactersCards/characters.slice";
 import CharCard from "components/CharCard";
-import { ErrorHandler } from "utils/ErrorHandler";
-import { classNames } from "utils/ClassNames";
-import Pagination from "components/Pagination";
+import { Error_handler } from "utils/error_handler";
+import { class_names } from "utils/class_names";
+import Pagination from "components/Pagination/index";
 import { useGetAllCharactersQuery } from "services/Characters/characters.api";
 import Spinner from "components/Spinner";
 import { COLORS } from "constants/colors";
@@ -31,7 +31,7 @@ export const CharactersCards = (props: ICharactersCardsProps) => {
     }
 
     if (isError) {
-      ErrorHandler(error);
+      Error_handler(error);
     }
   }, [data, error]);
 
@@ -41,7 +41,7 @@ export const CharactersCards = (props: ICharactersCardsProps) => {
   };
 
   return (
-    <div className={classNames("characters-cards", props.classNames)}>
+    <div className={class_names("characters-cards", props.classNames)}>
       {isLoading ? (
         <Spinner color={COLORS.PRIMARY} />
       ) : (

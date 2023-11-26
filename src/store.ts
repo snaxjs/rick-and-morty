@@ -3,18 +3,18 @@ import { configureStore } from "@reduxjs/toolkit";
 import { characterApi } from "services/Characters/characters.api";
 // Reducers
 import { charactersReducer } from "modules/CharactersCards/index";
-import { googleSearchApi } from "services/GoogleSearchApi/googleSearch.api";
+import { google_searchApi } from "services/GoogleSearchApi/google_search.api";
 
 export const store = configureStore({
   reducer: {
     [characterApi.reducerPath]: characterApi.reducer,
-    [googleSearchApi.reducerPath]: googleSearchApi.reducer,
+    [google_searchApi.reducerPath]: google_searchApi.reducer,
     characters: charactersReducer,
   },
   middleware: (getDefaultMiddleware: any) =>
     getDefaultMiddleware().concat([
       characterApi.middleware,
-      googleSearchApi.middleware,
+      google_searchApi.middleware,
     ]),
 });
 

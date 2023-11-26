@@ -1,6 +1,6 @@
 import React, { CSSProperties } from "react";
 import Spinner from "components/Spinner";
-import { classNames } from "utils/ClassNames";
+import { class_names } from "utils/class_names";
 import { VariantsTypes } from "types/general.types";
 
 interface IButtonProps {
@@ -18,7 +18,7 @@ const Button = (props: IButtonProps) => {
 
   return (
     <button
-      className={classNames("button", [variant, ...props.classNames])}
+      className={class_names("button", [variant, ...props.classNames])}
       onClick={props.onClick}
       type="button"
       disabled={props.disabled}

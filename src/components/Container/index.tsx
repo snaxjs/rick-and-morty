@@ -1,5 +1,5 @@
 import React, { CSSProperties, JSX } from "react";
-import { classNames } from "utils/ClassNames";
+import { class_names } from "utils/class_names";
 import {
   MAX_CONTAINER_WIDTH,
   PAGE_DEFAULT_PADDING_TOP,
@@ -15,7 +15,7 @@ interface IContainerProps {
 const Container = (props: IContainerProps) => {
   return (
     <div
-      className={classNames("container", props.classNames)}
+      className={class_names("container", props.classNames)}
       style={{
         width: "100%",
         maxWidth: MAX_CONTAINER_WIDTH,

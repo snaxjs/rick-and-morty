@@ -58,6 +58,7 @@ const config = {
       {
         test: /\.(?:js|mjs|cjs)$/,
         exclude: /node_modules/,
+        include: path.resolve(__dirname, "src"),
         use: {
           loader: "babel-loader",
           options: {
@@ -74,10 +75,12 @@ const config = {
       {
         test: /\.(ts|tsx)$/i,
         loader: "ts-loader",
+        include: path.resolve(__dirname, "src"),
         exclude: ["/node_modules/"],
       },
       {
         test: /\.s[ac]ss$/i,
+        include: path.resolve(__dirname, "src/scss"),
         use: [
           stylesHandler,
           "css-loader",
@@ -95,6 +98,7 @@ const config = {
       {
         test: /\.(eot|png|jpg|gif|webp)$/i,
         type: "asset/resource",
+        include: path.resolve(__dirname, "src/assets"),
         generator: {
           filename: "assets/images/[name].[ext]",
         },
@@ -102,17 +106,20 @@ const config = {
       {
         test: /\.svg$/i,
         type: "asset/inline",
+        include: path.resolve(__dirname, "src/assets"),
         resourceQuery: /url/,
       },
       {
         test: /\.svg$/i,
         issuer: /\.[jt]sx?$/,
         resourceQuery: { not: [/url/] },
+        include: path.resolve(__dirname, "src"),
         use: ["@svgr/webpack"],
       },
       {
         test: /\.(ttf)$/i,
         type: "asset",
+        include: path.resolve(__dirname, "src/assets"),
         generator: {
           filename: "assets/fonts/[name].[ext]",
         },

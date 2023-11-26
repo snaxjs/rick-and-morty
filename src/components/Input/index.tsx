@@ -1,5 +1,5 @@
 import React, { CSSProperties, JSX, useRef } from "react";
-import { classNames } from "utils/ClassNames";
+import { class_names } from "utils/class_names";
 import { COLORS } from "constants/colors";
 import hexRgb from "hex-rgb";
 
@@ -31,7 +31,7 @@ const Input = (props: IInputProps) => {
     <span
       style={props.stylesContainer}
       ref={ref}
-      className={classNames("input", props.classNames)}
+      className={class_names("input", props.classNames)}
     >
       <input
         className="input__native-el"

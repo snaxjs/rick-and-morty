@@ -1,5 +1,5 @@
 import React from "react";
-import { classNames } from "utils/ClassNames";
+import { class_names } from "utils/class_names";
 import {
   animate,
   motion,
@@ -8,11 +8,11 @@ import {
   MotionConfig,
 } from "framer-motion";
 import IconBurger from "assets/icons/burger.svg";
-import IconRoundDoubleArrow from "assets/icons/round-double-arrow.svg";
+import IconRoundDoubleArrow from "assets/icons/round_double_arrow.svg";
 import Logo from "assets/svg/logo.svg";
-import { isForwardClosure } from "utils/isForwardClosure";
+import { is_forward_closure } from "utils/is_forward_closure";
 import MenuNav from "components/MenuNav";
-import { SIDE_MENU } from "constants/sideMenuItems";
+import { SIDE_MENU } from "constants/side_menu_items";
 import RickAndMortyImage from "assets/png/rick_and_morty.png";
 
 interface ISideMenuProps {
@@ -26,7 +26,7 @@ const SideMenu = (props: ISideMenuProps) => {
   const opacity = useTransform(x, [-400, -64], [0, 1]);
   const opacityReverse = useTransform(x, [-400, -64], [1, 0]);
   const color = useTransform(x, [-400, -64], ["#262338", "#14142B"]);
-  const isDragForward = isForwardClosure();
+  const isDragForward = is_forward_closure();
 
   const onMenuDragEnd = (event: any, info: any) => {
     if (isDragForward(info.velocity.x)) {
@@ -42,7 +42,7 @@ const SideMenu = (props: ISideMenuProps) => {
 
   return (
     <MotionConfig reducedMotion="user">
-      <div className={classNames("side-menu", props.classNames)}>
+      <div className={class_names("side-menu", props.classNames)}>
         <motion.div
           className="side-menu__substrate"
           style={{ width, backgroundColor: color }}
@@ -82,6 +82,7 @@ const SideMenu = (props: ISideMenuProps) => {
             </motion.div>
             <motion.div style={{ opacity }}>
               <img
+                alt="Rick and Morty"
                 src={RickAndMortyImage}
                 className="side-menu__rick-morty-img"
               />
