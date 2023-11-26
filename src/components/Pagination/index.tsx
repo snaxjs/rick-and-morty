@@ -15,6 +15,7 @@ interface IPaginationProps {
   setPage?: any;
 }
 
+// Кол-во кнопок с цифрами
 const MAX_BUTTONS = 4;
 
 const Pagination = (props: IPaginationProps) => {
@@ -134,7 +135,21 @@ const Pagination = (props: IPaginationProps) => {
             </RoundButton>
           </div>
           <div className="pagination__page-input">
-            <Input type="text" />
+            <Input
+              stylesContainer={{ paddingRight: 2, maxWidth: 88 }}
+              type="text"
+              actionElement={
+                <RoundButton
+                  styles={{
+                    width: 25,
+                    height: 25,
+                    fontSize: 11,
+                  }}
+                >
+                  Go!
+                </RoundButton>
+              }
+            />
           </div>
         </div>
       </div>

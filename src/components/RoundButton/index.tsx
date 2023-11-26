@@ -10,12 +10,14 @@ interface IRoundButtonProps {
   onClick?: (e?: React.MouseEvent) => void;
   attributes?: IHTMLAttribute[];
   color?: string;
+  styles?: CSSProperties;
 }
 
 const RoundButton = (props: IRoundButtonProps) => {
   const ref = useRef(null);
   const styles: CSSProperties = {
     backgroundColor: props.color || COLORS.GRAYSCALE_BODY,
+    ...props.styles,
   };
 
   useEffect(() => {

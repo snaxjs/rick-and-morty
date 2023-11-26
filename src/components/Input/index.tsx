@@ -1,4 +1,4 @@
-import React, { CSSProperties, JSX, useRef } from "react";
+import React, { CSSProperties, ReactNode, useRef } from "react";
 import { classNames } from "utils/class_names";
 import { COLORS } from "constants/colors";
 import hexRgb from "hex-rgb";
@@ -8,7 +8,7 @@ interface IInputProps {
   type?: React.HTMLInputTypeAttribute;
   onInput?: (e?: React.FormEvent<HTMLInputElement>) => void;
   value?: string | number;
-  actionButton?: JSX.Element | JSX.Element[];
+  actionElement?: ReactNode;
   stylesContainer?: CSSProperties;
 }
 
@@ -29,7 +29,10 @@ const Input = (props: IInputProps) => {
 
   return (
     <span
-      style={props.stylesContainer}
+      style={{
+        paddingRight: props.actionElement ? 10 : 0,
+        ...props.stylesContainer,
+      }}
       ref={ref}
       className={classNames("input", props.classNames)}
     >
@@ -41,6 +44,7 @@ const Input = (props: IInputProps) => {
         onFocus={onFocus}
         onBlur={onBlur}
       />
+      {<span className="input__action-el">{props.actionElement}</span> || null}
     </span>
   );
 };
