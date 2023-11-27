@@ -7,8 +7,26 @@
     "noImplicitAny": true,
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "Node",
-    "typeRoots": ["./node_modules/@types", "./src/tsTypes"],
+    "typeRoots": ["./node_modules/@types",
+      "types",
+    ],
     "noUnusedLocals": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@assets": ["assets"],
+      "@components": ["components"],
+      "@configs": ["configs"],
+      "@constants": ["constants"],
+      "@hooks": ["hooks"],
+      "@modules": ["modules"],
+      "@pages": ["pages"],
+      "@routes": ["routes"],
+      "@scss": ["scss"],
+      "@services": ["services"],
+      "@types": ["types"],
+      "@utils": ["utils"],
+      "@interfaces": ["interfaces"],
+    }
   },
   "exclude": ["node_modules", "dist"]
 }

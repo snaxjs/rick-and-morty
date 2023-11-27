@@ -1,76 +1,187 @@
-import React, { useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
+import RoundButton from "components/RoundButton";
+import { COLORS } from "constants/colors";
+import { useAppDispatch } from "hooks/redux";
+import IconSwitch from "assets/icons/switch.svg";
+import { PaginationSwitchEnum } from "./data_structures";
+import { classNames } from "utils/class_names";
+import Input from "components/Input";
+import validator from "validator";
 
 interface IPaginationProps {
   classNames?: string[];
-  pages: number;
+  totalPages: number;
   currentPage: number;
   onClick?: (e: React.MouseEvent) => void;
+  setPage?: any;
 }
 
-const MAX_BUTTONS = 5;
-
-const Button = (
-  page: number,
-  onClick?: (e: React.MouseEvent) => void,
-  className?: string,
-) => {
-  return (
-    <button
-      className={className}
-      key={page}
-      data-page={page}
-      onClick={onClick}
-      disabled={!page}
-    >
-      {page ? page : "..."}
-    </button>
-  );
-};
+// Кол-во кнопок с цифрами
+const MAX_BUTTONS = 4;
 
 const Pagination = (props: IPaginationProps) => {
   const [elements, setElements] = useState([]);
+  const [type, setType] = useState<PaginationSwitchEnum>(
+    PaginationSwitchEnum.numbers,
+  );
+  const [inputPageValue, setInputPageValue] = useState<number>(
+    props.currentPage,
+  );
+  const dispatch = useAppDispatch();
 
-  const fillElements = () => {
+  const elemsOutOfRange = (elems: number[], range: number) => {
+    return !!(elems.find((item) => item > range) && elems.length !== range);
+  };
+
+  const generateElems = (count: number, increment: number): number[] => {
     let elems: number[] = [];
-    // flag - кол-во кнопок которые нужно отрендерить
-    const flag = props.pages < MAX_BUTTONS ? props.pages : MAX_BUTTONS;
-    const inc = props.currentPage > 1 ? props.currentPage - 1 : 1;
 
-    for (let i = inc; i < flag + inc; i++) {
-      if (i <= props.pages && i >= 1) {
-        elems.push(i);
-      }
+    Array.from(Array(count).keys()).forEach((page) => {
+      const pageNumber: number = page + increment;
+      elems.push(pageNumber);
+    });
+
+    return elems;
+  };
+
+  const fillElems = () => {
+    const increment = props.totalPages > MAX_BUTTONS ? props.currentPage : 1;
+    const count =
+      props.totalPages > MAX_BUTTONS ? MAX_BUTTONS : props.totalPages;
+    let elems: number[] = generateElems(count, increment);
+
+    if (elemsOutOfRange(elems, props.totalPages)) {
+      const staticInc = props.totalPages - MAX_BUTTONS + 1;
+      elems = generateElems(MAX_BUTTONS, staticInc);
     }
 
-    elems[elems.length - 1] = props.pages;
+    setElements(elems);
+  };
 
-    if (elems[elems.length - 1] - elems[elems.length - 2] !== 1) {
-      elems[elems.length - 2] = 0;
+  const onArrowClick = (e: React.MouseEvent) => {
+    const isPrev = e.currentTarget.getAttribute("data-type") === "prev";
+
+    if (isPrev && props.setPage) {
+      const page = props.currentPage - 1 || props.currentPage;
+      dispatch(props.setPage(page));
     }
 
-    if (
-      elems.includes(0) ||
-      (elems[elems.length - 1] - elems[elems.length - 2] === 1 &&
-        elems.length === flag)
-    ) {
-      setElements(elems);
+    if (!isPrev && props.setPage) {
+      const page =
+        props.currentPage + MAX_BUTTONS >= props.totalPages - MAX_BUTTONS + 1
+          ? props.totalPages - MAX_BUTTONS + 1
+          : props.currentPage + MAX_BUTTONS;
+      dispatch(props.setPage(page));
+    }
+  };
+
+  const onSwitchClick = () => {
+    setType((prev: PaginationSwitchEnum) =>
+      prev === PaginationSwitchEnum.page
+        ? PaginationSwitchEnum.numbers
+        : PaginationSwitchEnum.page,
+    );
+  };
+
+  const onInputPageValue = (e: ChangeEvent<HTMLInputElement>) => {
+    const value: string = e.target.value;
+
+    if (validator.isNumeric(value) && Number(value) <= props.totalPages) {
+      setInputPageValue(Number(value));
+    } else if (value === "" || value === undefined) {
+      setInputPageValue(0);
+    }
+  };
+
+  const onInputPageValueClick = () => {
+    if (inputPageValue) {
+      dispatch(props.setPage(inputPageValue));
     }
   };
 
   useEffect(() => {
-    fillElements();
-  }, [props.pages, props.currentPage]);
+    fillElems();
+  }, [props.currentPage, props.totalPages]);
 
   return (
-    <div className="pagination">
-      {elements.map((page) => {
-        const isCurrent =
-          page === props.currentPage ? " pagination__button_current" : "";
-        const isDots = !page ? " pagination__button_dots" : "";
-        const className = `pagination__button${isCurrent}${isDots}`;
-
-        return Button(page, props.onClick, className);
-      })}
+    <div className={classNames("pagination", props.classNames)}>
+      <div className="pagination__controls-wrapper">
+        <div
+          className={classNames("pagination__controls", [
+            type === PaginationSwitchEnum.page
+              ? "pagination__controls_show-page"
+              : "",
+          ])}
+        >
+          <div className={"pagination__numbers"}>
+            {props.currentPage === 1 ? null : (
+              <RoundButton
+                color={COLORS.GRAYSCALE_LABEL}
+                onClick={onArrowClick}
+                attributes={[
+                  {
+                    name: "data-type",
+                    value: "prev",
+                  },
+                ]}
+              >
+                {"<"}
+              </RoundButton>
+            )}
+            {!!elements.length &&
+              elements.map((page) => {
+                return (
+                  <RoundButton
+                    key={page}
+                    onClick={props.onClick}
+                    attributes={[{ name: "data-page", value: page }]}
+                  >
+                    {page}
+                  </RoundButton>
+                );
+              })}
+            <RoundButton
+              color={COLORS.GRAYSCALE_LABEL}
+              onClick={onArrowClick}
+              attributes={[
+                {
+                  name: "data-type",
+                  value: "next",
+                },
+              ]}
+            >
+              {">>"}
+            </RoundButton>
+          </div>
+          <div className="pagination__page-input">
+            <Input
+              value={inputPageValue}
+              stylesContainer={{ paddingRight: 2, maxWidth: 88 }}
+              type="text"
+              onInput={onInputPageValue}
+              actionElement={
+                <RoundButton
+                  onClick={onInputPageValueClick}
+                  styles={{
+                    width: 25,
+                    height: 25,
+                    fontSize: 11,
+                  }}
+                >
+                  Go!
+                </RoundButton>
+              }
+            />
+          </div>
+        </div>
+      </div>
+      <RoundButton
+        classNames={["pagination__switch"]}
+        color={COLORS.GRAYSCALE_LABEL}
+        onClick={onSwitchClick}
+      >
+        <IconSwitch width={14} height={14} fill="white" />
+      </RoundButton>
     </div>
   );
 };

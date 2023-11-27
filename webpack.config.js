@@ -58,20 +58,29 @@ const config = {
       {
         test: /\.(?:js|mjs|cjs)$/,
         exclude: /node_modules/,
+        include: path.resolve(__dirname, "src"),
         use: {
           loader: "babel-loader",
           options: {
-            presets: [["@babel/preset-env", { targets: "defaults" }]],
+            presets: [
+              [
+                "@babel/preset-env",
+                { targets: "defaults" },
+                "@babel/preset-react",
+              ],
+            ],
           },
         },
       },
       {
         test: /\.(ts|tsx)$/i,
         loader: "ts-loader",
+        include: path.resolve(__dirname, "src"),
         exclude: ["/node_modules/"],
       },
       {
         test: /\.s[ac]ss$/i,
+        include: path.resolve(__dirname, "src/scss"),
         use: [
           stylesHandler,
           "css-loader",
@@ -87,8 +96,9 @@ const config = {
         ],
       },
       {
-        test: /\.(eot|png|jpg|gif)$/i,
+        test: /\.(eot|png|jpg|gif|webp)$/i,
         type: "asset/resource",
+        include: path.resolve(__dirname, "src/assets"),
         generator: {
           filename: "assets/images/[name].[ext]",
         },
@@ -96,17 +106,20 @@ const config = {
       {
         test: /\.svg$/i,
         type: "asset/inline",
+        include: path.resolve(__dirname, "src/assets"),
         resourceQuery: /url/,
       },
       {
         test: /\.svg$/i,
         issuer: /\.[jt]sx?$/,
         resourceQuery: { not: [/url/] },
+        include: path.resolve(__dirname, "src"),
         use: ["@svgr/webpack"],
       },
       {
         test: /\.(ttf)$/i,
         type: "asset",
+        include: path.resolve(__dirname, "src/assets"),
         generator: {
           filename: "assets/fonts/[name].[ext]",
         },
@@ -115,6 +128,21 @@ const config = {
   },
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js"],
+    alias: {
+      assets: path.resolve(__dirname, "src/assets/"),
+      components: path.resolve(__dirname, "src/components/"),
+      configs: path.resolve(__dirname, "src/configs/"),
+      constants: path.resolve(__dirname, "src/constants/"),
+      hooks: path.resolve(__dirname, "src/hooks/"),
+      modules: path.resolve(__dirname, "src/modules/"),
+      pages: path.resolve(__dirname, "src/pages/"),
+      routes: path.resolve(__dirname, "src/routes/"),
+      scss: path.resolve(__dirname, "src/scss/"),
+      services: path.resolve(__dirname, "src/services/"),
+      types: path.resolve(__dirname, "src/types/"),
+      utils: path.resolve(__dirname, "src/utils/"),
+      interfaces: path.resolve(__dirname, "src/interfaces/"),
+    },
   },
 };
 

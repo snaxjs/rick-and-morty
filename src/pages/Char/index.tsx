@@ -1,14 +1,11 @@
 import React from "react";
-import { classNames } from "../../utils/ClassNames";
-import { useGetCharacterQuery } from "../../services/Characters/characters.api";
+import { classNames } from "utils/class_names";
+import { useGetCharacterQuery } from "services/Characters/characters.api";
 import { useParams } from "react-router-dom";
-interface ICharPageProps {
-  classNames?: string[];
-}
 
-const CharPage = (props: ICharPageProps) => {
+const CharPage = () => {
   const { id } = useParams();
-  const { data, isLoading, error } = useGetCharacterQuery(Number(id));
+  const { data, isLoading } = useGetCharacterQuery(Number(id));
 
   return (
     <main className={classNames("char-page")}>

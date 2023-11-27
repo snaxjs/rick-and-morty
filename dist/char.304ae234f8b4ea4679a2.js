@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkrickandmorty=self.webpackChunkrickandmorty||[]).push([[755],{2844:function(r,a,e){e.r(a);var n=e(7294),t=e(7631),c=e(1975),i=e(9250);a.default=r=>{const{id:a}=(0,i.UO)(),{data:e,isLoading:s,error:u}=(0,c.P6)(Number(a));return n.createElement("main",{className:(0,t.A)("char-page")},s?null:JSON.stringify(e,null,2))}}}]);

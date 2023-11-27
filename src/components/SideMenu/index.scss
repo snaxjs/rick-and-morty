@@ -6,16 +6,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 64px;
   }
 
   &__burger {
-    width: 75%;
-    height: 75%;
+    width: 60%;
+    height: 60%;
     fill: white;
     transform: translate(-2px,-2px);
   }
 
-  &__menu {
+  &__menu-wrapper {
     position: absolute;
     top: 0;
     left: 0;
@@ -23,6 +27,16 @@
     background-color: $color-grayscale-header-weak;
     box-shadow: 35px 0 40px 0 rgba(0, 0, 0, 0.06);
     z-index: 2;
+  }
+
+  &__menu {
+    width: 100%;
+    max-width: 400px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    overflow: hidden;
   }
 
   &__substrate {
@@ -33,5 +47,57 @@
     width: 64px;
     height: 100%;
     z-index: 1;
+  }
+
+  &__header {
+    display: flex;
+    padding-top: 20px;
+    margin-bottom: 48px;
+  }
+
+  &__logo-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+  }
+
+  &__logo {
+    width: 60%;
+  }
+
+  &__arrows {
+    fill: white;
+    stroke: white;
+    width: 38px;
+    height: 38px;
+  }
+
+  &__arrows-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    opacity: 0.4;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.9;
+      cursor: grabbing;
+    }
+  }
+
+  &__rick-morty-img {
+    width: 80%;
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    pointer-events: none;
+    transform: translateX(-50%);
   }
 }
