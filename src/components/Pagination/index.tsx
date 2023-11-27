@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import RoundButton from "components/RoundButton";
 import { COLORS } from "constants/colors";
 import { useAppDispatch } from "hooks/redux";
@@ -20,9 +20,11 @@ const MAX_BUTTONS = 4;
 
 const Pagination = (props: IPaginationProps) => {
   const [elements, setElements] = useState([]);
-  //@ts-ignore
   const [type, setType] = useState<PaginationSwitchEnum>(
     PaginationSwitchEnum.numbers,
+  );
+  const [inputPageValue, setInputPageValue] = useState<number>(
+    props.currentPage,
   );
   const dispatch = useAppDispatch();
 
@@ -78,6 +80,17 @@ const Pagination = (props: IPaginationProps) => {
         ? PaginationSwitchEnum.numbers
         : PaginationSwitchEnum.page,
     );
+  };
+
+  const onInputPageValue = (e: ChangeEvent<HTMLInputElement>) => {
+    const value: number = e.target.value ? Number(e.target.value) : 0;
+    setInputPageValue(value);
+  };
+
+  const onInputPageValueClick = () => {
+    if (inputPageValue) {
+      dispatch(props.setPage(inputPageValue));
+    }
   };
 
   useEffect(() => {
@@ -136,10 +149,13 @@ const Pagination = (props: IPaginationProps) => {
           </div>
           <div className="pagination__page-input">
             <Input
+              value={inputPageValue}
               stylesContainer={{ paddingRight: 2, maxWidth: 88 }}
               type="text"
+              onInput={onInputPageValue}
               actionElement={
                 <RoundButton
+                  onClick={onInputPageValueClick}
                   styles={{
                     width: 25,
                     height: 25,
