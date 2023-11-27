@@ -25,7 +25,7 @@ export const NoImage: Story = {
 export const WithImage: Story = {
   args: {
     from: "Some location",
-    image: "not_found",
+    image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
     species: "Some species",
     classNames: [],
     gender: "male",
