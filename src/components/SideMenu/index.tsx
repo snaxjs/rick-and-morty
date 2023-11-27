@@ -10,7 +10,7 @@ import {
 import IconBurger from "assets/icons/burger.svg";
 import IconRoundDoubleArrow from "assets/icons/round_double_arrow.svg";
 import Logo from "assets/svg/logo.svg";
-import { is_forward_closure } from "utils/is_forward_closure";
+import { isForwardClosure } from "utils/is_forward_closure";
 import MenuNav from "components/MenuNav";
 import { SIDE_MENU } from "constants/side_menu_items";
 import RickAndMortyImage from "assets/png/rick_and_morty.png";
@@ -26,7 +26,7 @@ const SideMenu = (props: ISideMenuProps) => {
   const opacity = useTransform(x, [-400, -64], [0, 1]);
   const opacityReverse = useTransform(x, [-400, -64], [1, 0]);
   const color = useTransform(x, [-400, -64], ["#262338", "#14142B"]);
-  const isDragForward = is_forward_closure();
+  const isDragForward = isForwardClosure();
 
   const onMenuDragEnd = (event: any, info: any) => {
     if (isDragForward(info.velocity.x)) {

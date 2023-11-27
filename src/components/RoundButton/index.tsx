@@ -1,6 +1,6 @@
 import React, { CSSProperties, JSX, useEffect, useRef } from "react";
 import { classNames } from "utils/class_names";
-import { insert_attributes } from "utils/insert_attributes";
+import { insertAttributes } from "utils/insert_attributes";
 import { IHTMLAttribute } from "interfaces/default";
 import { COLORS } from "../../constants/colors";
 
@@ -21,7 +21,7 @@ const RoundButton = (props: IRoundButtonProps) => {
   };
 
   useEffect(() => {
-    insert_attributes(ref, props.attributes);
+    insertAttributes(ref, props.attributes);
   }, []);
 
   return (

@@ -1,4 +1,4 @@
-export function Error_handler(e: Error) {
+export function ErrorHandler(e: Error) {
   console.groupCollapsed("ERROR");
   console.error("ERROR NAME", e.name);
   console.error("ERROR MESSAGE: ", e.message);

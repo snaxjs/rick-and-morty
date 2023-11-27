@@ -6,7 +6,7 @@ import {
   setTotalPages,
 } from "modules/CharactersCards/characters.slice";
 import CharCard from "components/CharCard";
-import { Error_handler } from "utils/error_handler";
+import { ErrorHandler } from "utils/error_handler";
 import { classNames } from "utils/class_names";
 import Pagination from "components/Pagination/index";
 import { useGetAllCharactersQuery } from "services/Characters/characters.api";
@@ -31,7 +31,7 @@ export const CharactersCards = (props: ICharactersCardsProps) => {
     }
 
     if (isError) {
-      Error_handler(error);
+      ErrorHandler(error);
     }
   }, [data, error]);
 
