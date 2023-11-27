@@ -1,6 +1,6 @@
-# **Rick and Morty Database Project** 👽
+# 👽**Rick and Morty Database Project**
 
-# **Tools used**
+# 🔧**Tools used**
 
 | Name  | Link  |
 |---|---|
@@ -14,7 +14,7 @@
 | Lottie  | [lottiefiles.com](https://lottiefiles.com)   |
 | Framer Motion  | [framer.com](https://www.framer.com)   |
 
-# **Get started**
+# 🚀**Get started**
 
 1. open terminal/cmd
 2. git clone https://github.com/snaxjs/rick-and-morty.git
@@ -22,5 +22,5 @@
 4. npm i
 5. npm run start
 
-# **Hosting**
+# 🌐**Hosting**
 *Coming soon...*
