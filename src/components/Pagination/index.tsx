@@ -6,6 +6,7 @@ import IconSwitch from "assets/icons/switch.svg";
 import { PaginationSwitchEnum } from "./data_structures";
 import { classNames } from "utils/class_names";
 import Input from "components/Input";
+import validator from "validator";
 
 interface IPaginationProps {
   classNames?: string[];
@@ -83,8 +84,13 @@ const Pagination = (props: IPaginationProps) => {
   };
 
   const onInputPageValue = (e: ChangeEvent<HTMLInputElement>) => {
-    const value: number = e.target.value ? Number(e.target.value) : 0;
-    setInputPageValue(value);
+    const value: string = e.target.value;
+
+    if (validator.isNumeric(value) && Number(value) <= props.totalPages) {
+      setInputPageValue(Number(value));
+    } else if (value === "" || value === undefined) {
+      setInputPageValue(0);
+    }
   };
 
   const onInputPageValueClick = () => {
