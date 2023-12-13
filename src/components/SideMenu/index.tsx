@@ -13,7 +13,7 @@ interface ISideMenuProps {
 }
 
 const SideMenu = (props: ISideMenuProps) => {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   const BURGER_WIDTH: string = "64px";
 
   const onShowMenu = () => setShow((prev) => !prev);
