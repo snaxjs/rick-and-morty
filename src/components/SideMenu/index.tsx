@@ -29,18 +29,18 @@ const SideMenu = (props: ISideMenuProps) => {
         `side-menu_${show ? "show" : "close"}`,
       ])}
     >
-      <motion.div
-        className="side-menu__burger-wrapper"
-        animate={{
-          rotate: show ? 360 : 0,
-        }}
-        whileHover={{ scale: 1.1 }}
-        transition={{ type: "spring", stiffness: 400, damping: 10 }}
-      >
-        <IconBurger className="side-menu__burger" onClick={onShowMenu} />
-      </motion.div>
       <div className="side-menu__menu-wrapper">
         <div className="side-menu__header">
+          <motion.div
+            className="side-menu__burger-wrapper"
+            animate={{
+              rotate: show ? 360 : 0,
+            }}
+            whileHover={{ scale: 1.1 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          >
+            <IconBurger className="side-menu__burger" onClick={onShowMenu} />
+          </motion.div>
           <motion.div
             className="side-menu__logo-wrapper"
             animate={{
