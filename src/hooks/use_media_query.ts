@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export function use_media_query(query: string): boolean {
+export function useMediaQuery(query: string): boolean {
   const getMatches = (query: string): boolean => {
     if (typeof window !== "undefined") {
       return window.matchMedia(query).matches;
