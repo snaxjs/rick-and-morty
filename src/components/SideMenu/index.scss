@@ -50,7 +50,7 @@ $side-menu-max-width: 400px;
     position: relative;
     display: flex;
     padding-top: 20px;
-    margin-bottom: 48px;
+    margin-bottom: 18px;
   }
 
   &__logo-wrapper {
@@ -58,6 +58,7 @@ $side-menu-max-width: 400px;
     align-items: center;
     justify-content: center;
     height: 100px;
+    overflow: hidden;
   }
 
   &__logo {
@@ -78,6 +79,11 @@ $side-menu-max-width: 400px;
     background-color: $color-grayscale-header;
     padding: 32px 16px;
     border-radius: 16px;
+    box-shadow: inset 0 5px 20px 0 rgba(0,0,0,0.2);
+  }
+
+  &__sign-in {
+    margin-bottom: 8px;
   }
 
   &__menu-nav {

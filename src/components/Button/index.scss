@@ -1,10 +1,10 @@
 .button {
   width: 100%;
-  height: 72px;
-  font-size: 18px;
+  height: 42px;
+  font-size: 16px;
   font-weight: 600;
   border: 0;
-  border-radius: 16px;
+  border-radius: 8px;
   background-color: $color-primary;
   color: white;
   align-items: center;
@@ -12,6 +12,7 @@
   display: flex;
   justify-content: center;
   transition: background-color 0.12s ease-in-out;
+  outline: none;
 
   &:hover {
     color: white;
@@ -20,7 +21,6 @@
 
   &:focus {
     background-color: $color-primary;
-    outline: 8px solid $color-bg-strong;
   }
 
   &:active {
@@ -41,7 +41,6 @@
 
     &:focus {
       background-color: $color-grayscale-body;
-      outline: 8px solid $color-grayscale-placeholder;
     }
 
     &:active {

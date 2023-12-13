@@ -18,7 +18,7 @@ const Button = (props: IButtonProps) => {
 
   return (
     <button
-      className={classNames("button", [variant, ...props.classNames])}
+      className={classNames("button", [...(props.classNames || []), variant])}
       onClick={props.onClick}
       type="button"
       disabled={props.disabled}

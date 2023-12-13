@@ -7,6 +7,7 @@ import MenuNav from "components/MenuNav";
 import { SIDE_MENU } from "constants/side_menu_items";
 import RickAndMortyImage from "assets/png/rick_and_morty.png";
 import Separator from "../Separator";
+import Button from "../Button";
 
 interface ISideMenuProps {
   classNames?: string[];
@@ -60,6 +61,18 @@ const SideMenu = (props: ISideMenuProps) => {
           <Separator gap={24} />
           <MenuNav classNames={["side-menu__menu-nav"]} items={SIDE_MENU} />
           <Separator gap={24} />
+          <div className="side-menu__action-buttons">
+            <Button
+              classNames={["side-menu__sign-in"]}
+              text="Войти"
+              variant="primary"
+            />
+            <Button
+              classNames={["side-menu__sign-up"]}
+              text="Регистрация"
+              variant="secondary"
+            />
+          </div>
         </motion.div>
         <motion.div
           animate={{
