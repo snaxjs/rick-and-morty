@@ -2,6 +2,7 @@ import React from "react";
 import { classNames } from "utils/class_names";
 import { IMenuNavItem } from "./interfaces";
 import { Link, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 
 interface IMenuNavProps {
   classNames?: string[];
@@ -22,12 +23,17 @@ const MenuNav = (props: IMenuNavProps) => {
               : "";
 
           return (
-            <li key={item.id} className="menu-nav__item">
+            <motion.li
+              key={item.id}
+              className="menu-nav__item"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300, damping: 5 }}
+            >
               <Link className={`menu-nav__item-link${active}`} to={item.path}>
                 {item.text}
               </Link>
               {Icon && <Icon className="menu-nav__item-icon" />}
-            </li>
+            </motion.li>
           );
         })}
       </ul>
