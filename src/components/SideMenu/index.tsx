@@ -6,6 +6,7 @@ import Logo from "assets/svg/logo.svg";
 import MenuNav from "components/MenuNav";
 import { SIDE_MENU } from "constants/side_menu_items";
 import RickAndMortyImage from "assets/png/rick_and_morty.png";
+import Separator from "../Separator";
 
 interface ISideMenuProps {
   classNames?: string[];
@@ -56,7 +57,9 @@ const SideMenu = (props: ISideMenuProps) => {
             opacity: show ? 1 : 0,
           }}
         >
+          <Separator gap={24} />
           <MenuNav classNames={["side-menu__menu-nav"]} items={SIDE_MENU} />
+          <Separator gap={24} />
         </motion.div>
         <motion.div
           animate={{
